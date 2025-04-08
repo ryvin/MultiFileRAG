@@ -13,7 +13,7 @@ def check_conda_installed():
             result = subprocess.run(["where", "conda"], capture_output=True, text=True)
         else:
             result = subprocess.run(["which", "conda"], capture_output=True, text=True)
-        
+
         if result.returncode == 0:
             print("✅ Conda is installed.")
             return True
@@ -27,7 +27,7 @@ def check_conda_installed():
 def create_conda_environment():
     """Create a conda environment for MultiFileRAG."""
     print("Creating conda environment for MultiFileRAG...")
-    
+
     try:
         # Check if environment already exists
         result = subprocess.run(["conda", "env", "list"], capture_output=True, text=True)
@@ -40,30 +40,30 @@ def create_conda_environment():
             else:
                 # Remove existing environment
                 subprocess.run(["conda", "env", "remove", "-n", "multifilerag", "-y"], check=True)
-        
+
         # Create environment from environment.yml
         if os.path.exists("environment.yml"):
             subprocess.run(["conda", "env", "create", "-f", "environment.yml"], check=True)
         else:
             # Create environment manually
             subprocess.run(["conda", "create", "-n", "multifilerag", "python=3.10", "-y"], check=True)
-            
+
             # Install conda packages
             subprocess.run([
                 "conda", "install", "-n", "multifilerag",
                 "pandas", "numpy", "matplotlib", "seaborn", "pillow", "requests", "python-dotenv",
                 "-y"
             ], check=True)
-            
+
             # Install pip packages
             if platform.system() == "Windows":
                 pip_cmd = ["conda", "run", "-n", "multifilerag", "pip", "install"]
             else:
                 pip_cmd = ["conda", "run", "-n", "multifilerag", "pip", "install"]
-            
+
             pip_packages = [
                 "lightrag-hku[api]",
-                "textract>=1.6.3",
+                "unstructured[all-docs]>=0.17.0",
                 "PyPDF2>=3.0.0",
                 "fastapi>=0.104.0",
                 "uvicorn>=0.23.2",
@@ -73,9 +73,9 @@ def create_conda_environment():
                 "jinja2>=3.1.2",
                 "aiofiles>=23.2.1"
             ]
-            
+
             subprocess.run(pip_cmd + pip_packages, check=True)
-        
+
         print("✅ Conda environment 'multifilerag' created successfully.")
         return True
     except subprocess.CalledProcessError as e:
@@ -143,38 +143,38 @@ def ensure_directories():
     # Create inputs directory if it doesn't exist
     input_dir = os.getenv("INPUT_DIR", "./inputs")
     Path(input_dir).mkdir(parents=True, exist_ok=True)
-    
+
     # Create working directory if it doesn't exist
     working_dir = os.getenv("WORKING_DIR", "./rag_storage")
     Path(working_dir).mkdir(parents=True, exist_ok=True)
-    
+
     print(f"✅ Directories created/verified: {input_dir}, {working_dir}")
 
 def main():
     parser = argparse.ArgumentParser(description="Set up conda environment for MultiFileRAG")
     parser.add_argument("--skip-ollama-check", action="store_true", help="Skip checking Ollama installation")
-    
+
     args = parser.parse_args()
-    
+
     print("🔍 Setting up conda environment for MultiFileRAG...")
-    
+
     # Check if conda is installed
     if not check_conda_installed():
         print("Please install conda before continuing.")
         print("Visit https://docs.conda.io/en/latest/miniconda.html for installation instructions.")
         sys.exit(1)
-    
+
     # Create conda environment
     if not create_conda_environment():
         print("Failed to create conda environment.")
         sys.exit(1)
-    
+
     # Check if Ollama is running (if not skipped)
     if not args.skip_ollama_check:
         if not check_ollama_running():
             print("Please start Ollama before continuing.")
             sys.exit(1)
-        
+
         # Check and pull required models
         required_models = ["llama3", "nomic-embed-text"]
         for model in required_models:
@@ -183,20 +183,20 @@ def main():
                 if not pull_model(model):
                     print(f"❌ Failed to pull model '{model}'. Please try manually: ollama pull {model}")
                     sys.exit(1)
-    
+
     # Ensure directories exist
     ensure_directories()
-    
+
     print("\n✅ Setup complete!")
     print("\nTo activate the conda environment, run:")
     if platform.system() == "Windows":
         print("  conda activate multifilerag")
     else:
         print("  conda activate multifilerag")
-    
+
     print("\nTo start the MultiFileRAG server, run:")
     print("  python start_server.py")
-    
+
     print("\nThe web UI will be available at:")
     print("  http://localhost:9621")
 

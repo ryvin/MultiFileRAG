@@ -1,0 +1,3 @@
+@echo off
+echo Starting MultiFileRAG Web UI...
+C:\Users\raul\.conda\envs\multifilerag\Scripts\lightrag-server.exe --host 0.0.0.0 --port 9621 --working-dir ./rag_storage --input-dir ./inputs --auto-scan-at-startup

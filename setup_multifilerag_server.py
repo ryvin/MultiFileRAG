@@ -66,18 +66,18 @@ def pull_model(model_name):
 def install_dependencies():
     """Install required dependencies."""
     print("Installing required dependencies...")
-    
+
     # Define dependencies
     dependencies = [
         "lightrag-hku[api]",  # LightRAG with API support
         "pandas>=1.5.0",      # For CSV processing
         "numpy>=1.23.0",      # For numerical operations
         "Pillow>=9.2.0",      # For image processing
-        "textract>=1.6.3",    # For extracting text from various file types
+        "unstructured[all-docs]>=0.17.0",    # For extracting text from various file types
         "PyPDF2>=3.0.0",      # For PDF processing
         "python-dotenv>=1.0.0" # For environment variables
     ]
-    
+
     # Install dependencies
     for dependency in dependencies:
         try:
@@ -86,7 +86,7 @@ def install_dependencies():
         except subprocess.CalledProcessError as e:
             print(f"❌ Error installing {dependency}: {e}")
             sys.exit(1)
-    
+
     print("✅ Dependencies installed successfully!")
 
 def create_env_file():
@@ -132,18 +132,18 @@ LIGHTRAG_DOC_STATUS_STORAGE=JsonDocStatusStorage
 WORKING_DIR=./rag_storage
 INPUT_DIR=./inputs
 """
-    
+
     # Write .env file
     with open(".env", "w") as f:
         f.write(env_content)
-    
+
     print("✅ Created .env file with configuration for Ollama integration.")
 
 def create_sample_files():
     """Create sample files for demonstration."""
     samples_dir = Path("./samples")
     samples_dir.mkdir(exist_ok=True)
-    
+
     # Create a sample CSV file
     csv_path = samples_dir / "employee_data.csv"
     csv_content = """Name,Age,Department,Salary,Years_Experience,Performance_Score
@@ -157,10 +157,10 @@ Frank Miller,45,Finance,120000,18,4.3
 Grace Lee,29,Data Science,95000,5,4.6
 Henry Taylor,38,Sales,82000,12,3.5
 Ivy Martinez,31,Customer Support,75000,6,4.0"""
-    
+
     with open(csv_path, "w") as f:
         f.write(csv_content)
-    
+
     # Create a sample text file that will be used as a PDF
     txt_path = samples_dir / "sample_document.txt"
     txt_content = """# Sample Document
@@ -186,10 +186,10 @@ It then builds a knowledge graph that can be queried using natural language.
 
 ## Conclusion
 MultiFileRAG provides a powerful way to extract insights from your documents."""
-    
+
     with open(txt_path, "w") as f:
         f.write(txt_content)
-    
+
     print("✅ Created sample files in the 'samples' directory.")
 
 def create_start_script():
@@ -224,11 +224,11 @@ def ensure_directories():
     # Create inputs directory if it doesn't exist
     input_dir = os.getenv("INPUT_DIR", "./inputs")
     Path(input_dir).mkdir(parents=True, exist_ok=True)
-    
+
     # Create working directory if it doesn't exist
     working_dir = os.getenv("WORKING_DIR", "./rag_storage")
     Path(working_dir).mkdir(parents=True, exist_ok=True)
-    
+
     print(f"✅ Directories created/verified: {input_dir}, {working_dir}")
 
 def main():
@@ -236,27 +236,27 @@ def main():
     parser.add_argument("--host", default=os.getenv("HOST", "0.0.0.0"), help="Server host")
     parser.add_argument("--port", type=int, default=int(os.getenv("PORT", "9621")), help="Server port")
     parser.add_argument("--auto-scan", action="store_true", help="Automatically scan input directory at startup")
-    
+
     args = parser.parse_args()
-    
+
     # Check if Ollama is running
     if not check_ollama_running():
         print("Please start Ollama before running the server.")
         sys.exit(1)
-    
+
     # Ensure directories exist
     ensure_directories()
-    
+
     # Build the command to start the server
     cmd = [
         "lightrag-server",
         "--host", args.host,
         "--port", str(args.port)
     ]
-    
+
     if args.auto_scan:
         cmd.append("--auto-scan-at-startup")
-    
+
     # Start the server
     print(f"Starting MultiFileRAG server on {args.host}:{args.port}...")
     try:
@@ -270,15 +270,15 @@ def main():
 if __name__ == "__main__":
     main()
 """
-    
+
     # Write start script
     with open("start_server.py", "w") as f:
         f.write(script_content)
-    
+
     # Make it executable on Unix-like systems
     if platform.system() != "Windows":
         os.chmod("start_server.py", 0o755)
-    
+
     print("✅ Created start_server.py script.")
 
 def create_readme():
@@ -359,24 +359,24 @@ The setup script creates sample files in the `samples` directory:
 
 This project is licensed under the MIT License.
 """
-    
+
     # Write README file
     with open("README_server.md", "w") as f:
         f.write(readme_content)
-    
+
     print("✅ Created README_server.md file.")
 
 def main():
     print("🔍 Setting up MultiFileRAG server...")
-    
+
     # Check Python version
     check_python_version()
-    
+
     # Check if Ollama is running
     if not check_ollama_running():
         print("Please start Ollama before continuing.")
         sys.exit(1)
-    
+
     # Check and pull required models
     required_models = ["llama3", "nomic-embed-text"]
     for model in required_models:
@@ -385,26 +385,26 @@ def main():
             if not pull_model(model):
                 print(f"❌ Failed to pull model '{model}'. Please try manually: ollama pull {model}")
                 sys.exit(1)
-    
+
     # Install dependencies
     install_dependencies()
-    
+
     # Create .env file
     create_env_file()
-    
+
     # Create sample files
     create_sample_files()
-    
+
     # Create start script
     create_start_script()
-    
+
     # Create README
     create_readme()
-    
+
     # Create directories
     Path("./inputs").mkdir(exist_ok=True)
     Path("./rag_storage").mkdir(exist_ok=True)
-    
+
     print("\n✅ Setup complete!")
     print("\nTo start the MultiFileRAG server, run:")
     print("  python start_server.py")

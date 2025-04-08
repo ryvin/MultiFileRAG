@@ -47,7 +47,7 @@ An advanced script with enhanced data analysis and visualization capabilities, u
 - matplotlib
 - seaborn
 - Pillow
-- textract
+- unstructured
 - requests
 
 ## Installation
@@ -65,7 +65,7 @@ An advanced script with enhanced data analysis and visualization capabilities, u
 3. Install and set up Ollama:
    ```
    # Download and install Ollama from https://ollama.com/
-   
+
    # Pull the required models
    ollama pull llama3
    ollama pull nomic-embed-text

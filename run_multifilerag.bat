@@ -1,0 +1,3 @@
+@echo off
+echo Running MultiFileRAG with Python from multifilerag environment...
+C:\Users\raul\.conda\envs\multifilerag\python.exe %*

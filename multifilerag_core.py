@@ -82,9 +82,11 @@ class MultiFileRAG:
 
     async def initialize(self):
         """Initialize the LightRAG instance."""
-        # Determine embedding dimension based on model
-        embedding_dim = 768  # Default for nomic-embed-text
-        if self.embedding_model_name == "bge-m3":
+        # Get embedding dimension from environment variable or determine based on model
+        embedding_dim = int(os.getenv("EMBEDDING_DIM", 768))  # Default to 768 if not specified
+
+        # Override with model-specific dimension if not explicitly set in .env
+        if "EMBEDDING_DIM" not in os.environ and self.embedding_model_name == "bge-m3":
             embedding_dim = 1024
 
         # Create the LightRAG instance
@@ -244,9 +246,16 @@ def main():
     # Get environment variables or use defaults
     working_dir = os.getenv("WORKING_DIR", "./rag_storage")
     input_dir = os.getenv("INPUT_DIR", "./inputs")
+
+    # Get model settings from environment variables
     llm_model_name = os.getenv("LLM_MODEL", "llama3")
     embedding_model_name = os.getenv("EMBEDDING_MODEL", "nomic-embed-text")
+
+    # Get Ollama host from environment variable
     ollama_host = os.getenv("LLM_BINDING_HOST", "http://localhost:11434")
+
+    print(f"Using LLM model: {llm_model_name}")
+    print(f"Using embedding model: {embedding_model_name}")
 
     # Create and initialize MultiFileRAG
     mfrag = asyncio.run(create_multifilerag(

@@ -1,232 +1,887 @@
 <?xml version='1.0' encoding='utf-8'?>
-<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
-  <key id="d9" for="edge" attr.name="file_path" attr.type="string" />
-  <key id="d8" for="edge" attr.name="source_id" attr.type="string" />
-  <key id="d7" for="edge" attr.name="keywords" attr.type="string" />
-  <key id="d6" for="edge" attr.name="description" attr.type="string" />
-  <key id="d5" for="edge" attr.name="weight" attr.type="double" />
-  <key id="d4" for="node" attr.name="file_path" attr.type="string" />
-  <key id="d3" for="node" attr.name="source_id" attr.type="string" />
-  <key id="d2" for="node" attr.name="description" attr.type="string" />
-  <key id="d1" for="node" attr.name="entity_type" attr.type="string" />
-  <key id="d0" for="node" attr.name="entity_id" attr.type="string" />
-  <graph edgedefault="undirected">
-    <node id="Jane Smith">
-      <data key="d0">Jane Smith</data>
-      <data key="d1">person</data>
-      <data key="d2">Jane Smith is a data scientist with 28 years old.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Bob Johnson">
-      <data key="d0">Bob Johnson</data>
-      <data key="d1">person</data>
-      <data key="d2">Bob Johnson is a project manager with 35 years old.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Alice Brown">
-      <data key="d0">Alice Brown</data>
-      <data key="d1">person</data>
-      <data key="d2">Alice Brown is a marketing specialist with 42 years old.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Charlie Davis">
-      <data key="d0">Charlie Davis</data>
-      <data key="d1">person</data>
-      <data key="d2">Charlie Davis is a designer with 25 years old.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Eva Wilson">
-      <data key="d0">Eva Wilson</data>
-      <data key="d1">person</data>
-      <data key="d2">Eva Wilson is an engineer with 33 years old.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Frank Miller">
-      <data key="d0">Frank Miller</data>
-      <data key="d1">person</data>
-      <data key="d2">Frank Miller is a finance specialist with 45 years old.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Grace Lee">
-      <data key="d0">Grace Lee</data>
-      <data key="d1">person</data>
-      <data key="d2">Grace Lee is a data scientist with 29 years old.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Henry Taylor">
-      <data key="d0">Henry Taylor</data>
-      <data key="d1">person</data>
-      <data key="d2">Henry Taylor is a sales representative with 38 years old.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Ivy Martinez">
-      <data key="d0">Ivy Martinez</data>
-      <data key="d1">person</data>
-      <data key="d2">Ivy Martinez is a customer support specialist with 31 years old.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="John Doe">
-      <data key="d0">John Doe</data>
-      <data key="d1">person</data>
-      <data key="d2">John Doe is an employee with 30 years old.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Engineering">
-      <data key="d0">Engineering</data>
-      <data key="d1">organization</data>
-      <data key="d2">The Engineering department is responsible for product development and design.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Data Science">
-      <data key="d0">Data Science</data>
-      <data key="d1">category</data>
-      <data key="d2">Data Science is a field that involves extracting insights from large datasets.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Project Management">
-      <data key="d0">Project Management</data>
-      <data key="d1">category</data>
-      <data key="d2">Project Management is the process of planning, executing, and controlling projects to achieve specific goals.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Marketing">
-      <data key="d0">Marketing</data>
-      <data key="d1">category</data>
-      <data key="d2">Marketing is a field that involves promoting products or services to target audiences.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Finance">
-      <data key="d0">Finance</data>
-      <data key="d1">organization</data>
-      <data key="d2">The Finance department is responsible for managing the company's financial resources and making investment decisions.</data>
-      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="MultiFileRAG System">
-      <data key="d0">MultiFileRAG System</data>
-      <data key="d1">organization</data>
-      <data key="d2">The MultiFileRAG System is a specialized implementation of LightRAG for processing PDF, CSV, and image files, providing enhanced data analysis, visualization, and querying capabilities powered by local LLMs through Ollama.</data>
-      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Local LLM Integration">
-      <data key="d0">Local LLM Integration</data>
-      <data key="d1">category</data>
-      <data key="d2">Local LLM Integration uses Ollama to run models locally without relying on external APIs, a key feature of the MultiFileRAG System.</data>
-      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="PDF Processing">
-      <data key="d0">PDF Processing</data>
-      <data key="d1">category</data>
-      <data key="d2">The MultiFileRAG System extracts text and insights from PDF files, one of its primary features.&lt;SEP&gt;The system extracts text and insights from PDF files, one of its primary features.</data>
-      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="CSV Processing">
-      <data key="d0">CSV Processing</data>
-      <data key="d1">category</data>
-      <data key="d2">The system also processes CSV files to extract text, statistics, and insights.&lt;SEP&gt;The system processes CSV files to extract text, statistics, and insights, providing valuable insights into the data.</data>
-      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Image Processing">
-      <data key="d0">Image Processing</data>
-      <data key="d1">category</data>
-      <data key="d2">Metadata and descriptions can be extracted from image files using the MultiFileRAG System, enhancing its capabilities.&lt;SEP&gt;Metadata and descriptions can be extracted from image files using the MultiFileRAG System.</data>
-      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Advanced Querying">
-      <data key="d0">Advanced Querying</data>
-      <data key="d1">category</data>
-      <data key="d2">The system supports advanced querying across multiple file types using LightRAG's various modes, providing users with more control over their queries.&lt;SEP&gt;The system supports advanced querying across multiple file types using LightRAG's various modes.</data>
-      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Web UI">
-      <data key="d0">Web UI</data>
-      <data key="d1">category</data>
-      <data key="d2">A user-friendly interface allows users to upload files and query the system effectively, making it accessible for all users.&lt;SEP&gt;A user-friendly interface allows users to upload files and query the system effectively.</data>
-      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="LightRAG">
-      <data key="d0">LightRAG</data>
-      <data key="d1">organization</data>
-      <data key="d2">LightRAG is a specialized implementation of LightRAG for processing PDF, CSV, and image files, providing enhanced data analysis, visualization, and querying capabilities powered by local LLMs through Ollama.</data>
-      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <node id="Ollama">
-      <data key="d0">Ollama</data>
-      <data key="d1">category</data>
-      <data key="d2">Ollama is the technology that enables local LLM integration with the MultiFileRAG System, allowing for API-free processing of files.</data>
-      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d4">unknown_source</data>
-    </node>
-    <edge source="MultiFileRAG System" target="Local LLM Integration">
-      <data key="d5">16.0</data>
-      <data key="d6">The MultiFileRAG System relies on Local LLM Integration for processing files locally without external APIs.&lt;SEP&gt;The system relies on Local LLM Integration to run models locally without relying on external APIs.</data>
-      <data key="d7">integration, API-fee&lt;SEP&gt;integration, API-free</data>
-      <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d9">unknown_source</data>
-    </edge>
-    <edge source="MultiFileRAG System" target="PDF Processing">
-      <data key="d5">18.0</data>
-      <data key="d6">The system extracts text and insights from PDF files as part of its primary features.</data>
-      <data key="d7">file processing, information extraction</data>
-      <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d9">unknown_source</data>
-    </edge>
-    <edge source="MultiFileRAG System" target="CSV Processing">
-      <data key="d5">16.0</data>
-      <data key="d6">The system processes CSV files to extract text, statistics, and insights, providing valuable insights into the data.</data>
-      <data key="d7">data analysis, statistical insights</data>
-      <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d9">unknown_source</data>
-    </edge>
-    <edge source="MultiFileRAG System" target="Image Processing">
-      <data key="d5">14.0</data>
-      <data key="d6">Metadata and descriptions can be extracted from image files using the MultiFileRAG System, enhancing its capabilities.</data>
-      <data key="d7">image processing, metadata extraction</data>
-      <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d9">unknown_source</data>
-    </edge>
-    <edge source="MultiFileRAG System" target="Advanced Querying">
-      <data key="d5">18.0</data>
-      <data key="d6">The system supports advanced querying across multiple file types using LightRAG's various modes, providing users with more control over their queries.</data>
-      <data key="d7">querying, data retrieval</data>
-      <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d9">unknown_source</data>
-    </edge>
-    <edge source="MultiFileRAG System" target="Web UI">
-      <data key="d5">16.0</data>
-      <data key="d6">A user-friendly interface allows users to upload files and query the system effectively, making it accessible for all users.</data>
-      <data key="d7">user interface, accessibility</data>
-      <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d9">unknown_source</data>
-    </edge>
-    <edge source="LightRAG" target="Ollama">
-      <data key="d5">8.0</data>
-      <data key="d6">LightRAG is powered by Ollama technology, enabling local LLM integration with the MultiFileRAG System, allowing for API-free processing of files.</data>
-      <data key="d7">integration, API-fee</data>
-      <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
-      <data key="d9">unknown_source</data>
-    </edge>
-  </graph>
-</graphml>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d9" for="edge" attr.name="file_path" attr.type="string"/>
+<key id="d8" for="edge" attr.name="source_id" attr.type="string"/>
+<key id="d7" for="edge" attr.name="keywords" attr.type="string"/>
+<key id="d6" for="edge" attr.name="description" attr.type="string"/>
+<key id="d5" for="edge" attr.name="weight" attr.type="double"/>
+<key id="d4" for="node" attr.name="file_path" attr.type="string"/>
+<key id="d3" for="node" attr.name="source_id" attr.type="string"/>
+<key id="d2" for="node" attr.name="description" attr.type="string"/>
+<key id="d1" for="node" attr.name="entity_type" attr.type="string"/>
+<key id="d0" for="node" attr.name="entity_id" attr.type="string"/>
+<graph edgedefault="undirected"><node id="Jane Smith">
+  <data key="d0">Jane Smith</data>
+  <data key="d1">person</data>
+  <data key="d2">Jane Smith is a data scientist with 28 years old.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Bob Johnson">
+  <data key="d0">Bob Johnson</data>
+  <data key="d1">person</data>
+  <data key="d2">Bob Johnson is a project manager with 35 years old.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Alice Brown">
+  <data key="d0">Alice Brown</data>
+  <data key="d1">person</data>
+  <data key="d2">Alice Brown is a marketing specialist with 42 years old.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Charlie Davis">
+  <data key="d0">Charlie Davis</data>
+  <data key="d1">person</data>
+  <data key="d2">Charlie Davis is a designer with 25 years old.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Eva Wilson">
+  <data key="d0">Eva Wilson</data>
+  <data key="d1">person</data>
+  <data key="d2">Eva Wilson is an engineer with 33 years old.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Frank Miller">
+  <data key="d0">Frank Miller</data>
+  <data key="d1">person</data>
+  <data key="d2">Frank Miller is a finance specialist with 45 years old.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Grace Lee">
+  <data key="d0">Grace Lee</data>
+  <data key="d1">person</data>
+  <data key="d2">Grace Lee is a data scientist with 29 years old.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Henry Taylor">
+  <data key="d0">Henry Taylor</data>
+  <data key="d1">person</data>
+  <data key="d2">Henry Taylor is a sales representative with 38 years old.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Ivy Martinez">
+  <data key="d0">Ivy Martinez</data>
+  <data key="d1">person</data>
+  <data key="d2">Ivy Martinez is a customer support specialist with 31 years old.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="John Doe">
+  <data key="d0">John Doe</data>
+  <data key="d1">person</data>
+  <data key="d2">John Doe is an employee with 30 years old.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Engineering">
+  <data key="d0">Engineering</data>
+  <data key="d1">organization</data>
+  <data key="d2">The Engineering department is responsible for product development and design.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Data Science">
+  <data key="d0">Data Science</data>
+  <data key="d1">category</data>
+  <data key="d2">Data Science is a field that involves extracting insights from large datasets.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Project Management">
+  <data key="d0">Project Management</data>
+  <data key="d1">category</data>
+  <data key="d2">Project Management is the process of planning, executing, and controlling projects to achieve specific goals.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Marketing">
+  <data key="d0">Marketing</data>
+  <data key="d1">category</data>
+  <data key="d2">Marketing is a field that involves promoting products or services to target audiences.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Finance">
+  <data key="d0">Finance</data>
+  <data key="d1">organization</data>
+  <data key="d2">The Finance department is responsible for managing the company's financial resources and making investment decisions.</data>
+  <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="MultiFileRAG System">
+  <data key="d0">MultiFileRAG System</data>
+  <data key="d1">organization</data>
+  <data key="d2">The MultiFileRAG System is a specialized implementation of LightRAG for processing PDF, CSV, and image files, providing enhanced data analysis, visualization, and querying capabilities powered by local LLMs through Ollama.</data>
+  <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Local LLM Integration">
+  <data key="d0">Local LLM Integration</data>
+  <data key="d1">category</data>
+  <data key="d2">Local LLM Integration uses Ollama to run models locally without relying on external APIs, a key feature of the MultiFileRAG System.</data>
+  <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="PDF Processing">
+  <data key="d0">PDF Processing</data>
+  <data key="d1">category</data>
+  <data key="d2">The MultiFileRAG System extracts text and insights from PDF files, one of its primary features.&lt;SEP&gt;The system extracts text and insights from PDF files, one of its primary features.</data>
+  <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="CSV Processing">
+  <data key="d0">CSV Processing</data>
+  <data key="d1">category</data>
+  <data key="d2">The system also processes CSV files to extract text, statistics, and insights.&lt;SEP&gt;The system processes CSV files to extract text, statistics, and insights, providing valuable insights into the data.</data>
+  <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Image Processing">
+  <data key="d0">Image Processing</data>
+  <data key="d1">category</data>
+  <data key="d2">Metadata and descriptions can be extracted from image files using the MultiFileRAG System, enhancing its capabilities.&lt;SEP&gt;Metadata and descriptions can be extracted from image files using the MultiFileRAG System.</data>
+  <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Advanced Querying">
+  <data key="d0">Advanced Querying</data>
+  <data key="d1">category</data>
+  <data key="d2">The system supports advanced querying across multiple file types using LightRAG's various modes, providing users with more control over their queries.&lt;SEP&gt;The system supports advanced querying across multiple file types using LightRAG's various modes.</data>
+  <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Web UI">
+  <data key="d0">Web UI</data>
+  <data key="d1">category</data>
+  <data key="d2">A user-friendly interface allows users to upload files and query the system effectively, making it accessible for all users.&lt;SEP&gt;A user-friendly interface allows users to upload files and query the system effectively.</data>
+  <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="LightRAG">
+  <data key="d0">LightRAG</data>
+  <data key="d1">organization</data>
+  <data key="d2">LightRAG is a specialized implementation of LightRAG for processing PDF, CSV, and image files, providing enhanced data analysis, visualization, and querying capabilities powered by local LLMs through Ollama.</data>
+  <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="Ollama">
+  <data key="d0">Ollama</data>
+  <data key="d1">category</data>
+  <data key="d2">Ollama is the technology that enables local LLM integration with the MultiFileRAG System, allowing for API-free processing of files.</data>
+  <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d4">unknown_source</data>
+</node>
+<node id="VESTA">
+  <data key="d0">VESTA</data>
+  <data key="d1">organization</data>
+  <data key="d2">VESTA is a prepaid service provider offering wireless plans and services.</data>
+  <data key="d3">chunk-765b5900669d914fdef483eecc2764ae</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="AT&amp;T PREPAID 866-608-3007 OR">
+  <data key="d0">AT&amp;T PREPAID 866-608-3007 OR</data>
+  <data key="d1">organization</data>
+  <data key="d2">AT&amp;T PREPAID is a telecommunications company offering prepaid wireless services.</data>
+  <data key="d3">chunk-765b5900669d914fdef483eecc2764ae</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="TOYOTA ACH RTL, 01012025">
+  <data key="d0">TOYOTA ACH RTL, 01012025</data>
+  <data key="d1">category</data>
+  <data key="d2">Toyota is a Japanese automaker producing vehicles and automotive parts.</data>
+  <data key="d3">chunk-765b5900669d914fdef483eecc2764ae</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="AMAZON MARK* ZP2Z75PEO HTTPSAMAZON. C WA ">
+  <data key="d0">AMAZON MARK* ZP2Z75PEO HTTPSAMAZON. C WA </data>
+  <data key="d1">organization</data>
+  <data key="d2">Amazon is an American multinational technology company offering e-commerce services, cloud computing, and more.</data>
+  <data key="d3">chunk-765b5900669d914fdef483eecc2764ae</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="TACO BELL 731909 702-644-9272 NV">
+  <data key="d0">TACO BELL 731909 702-644-9272 NV</data>
+  <data key="d1">organization</data>
+  <data key="d2">Taco Bell is a fast-food chain serving Mexican-inspired food and beverages.</data>
+  <data key="d3">chunk-765b5900669d914fdef483eecc2764ae</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="SMITHS-FUEL #9334 NORTH LAS VEG NV">
+  <data key="d0">SMITHS-FUEL #9334 NORTH LAS VEG NV</data>
+  <data key="d3">chunk-765b5900669d914fdef483eecc2764ae</data>
+  <data key="d2">Taco Bell and Smith's Fuel are related as they both operate in the fast-food and convenience store industries, serving customers and meeting their needs.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="Amazon">
+  <data key="d0">Amazon</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">Amazon processed payments.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="Payment">
+  <data key="d0">Payment</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">Amazon processed payments.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="Ext Trnsfr">
+  <data key="d0">Ext Trnsfr</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">JPMorgan Chase transferred money externally for international transactions.&lt;SEP&gt;JPMorgan Chase transferred money externally.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="JPMorgan Chase">
+  <data key="d0">JPMorgan Chase</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">JPMorgan Chase transferred money externally for international transactions.&lt;SEP&gt;JPMorgan Chase transferred money externally.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="Google One">
+  <data key="d0">Google One</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">Google One provided cloud storage services.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="g.co/helppay">
+  <data key="d0">g.co/helppay</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">Google One provided cloud storage services.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="WILBER INSURANCE">
+  <data key="d0">WILBER INSURANCE</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">WILBER INSURANCE received payments for insurance premiums and claims.&lt;SEP&gt;WILBER INSURANCE received payments.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="INS PREM">
+  <data key="d0">INS PREM</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">PROG DIRECT INS provided direct insurance premiums to policyholders.&lt;&lt;SEP&gt;PROG DIRECT INS provided insurance premiums.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="PROG DIRECT INS">
+  <data key="d0">PROG DIRECT INS</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">PROG DIRECT INS provided direct insurance premiums to policyholders.&lt;&lt;SEP&gt;PROG DIRECT INS provided insurance premiums.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="Government Agency">
+  <data key="d0">Government Agency</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">UNITED CONCORDIA GOVT is a government agency providing public services and infrastructure to citizens.&lt;&lt;SEP&gt;UNITED CONCORDIA GOVT is a government agency providing services.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="UNITED CONCORDIA GOVT">
+  <data key="d0">UNITED CONCORDIA GOVT</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">UNITED CONCORDIA GOVT is a government agency providing public services and infrastructure to citizens.&lt;&lt;SEP&gt;UNITED CONCORDIA GOVT is a government agency providing services.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="Amazon MARK* ZX7CO7S32">
+  <data key="d0">Amazon MARK* ZX7CO7S32</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">Amazon MARK* ZX7CO7S32 processed payments for various transactions.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="Google One g.co/helppay">
+  <data key="d0">Google One g.co/helppay</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">Google One g.co/helppay provided cloud storage services to users.&lt;</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="g.co/ helppay ">
+  <data key="d0">g.co/ helppay </data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">Google One g.co/helppay provided cloud storage services to users.&lt;</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="Fast Food">
+  <data key="d0">Fast Food</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">TACO BELL 731909 offers fast food options to customers, including Mexican-inspired menu items.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="TACO BELL 731909">
+  <data key="d0">TACO BELL 731909</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">TACO BELL 731909 offers fast food options to customers, including Mexican-inspired menu items.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="Fuel Services">
+  <data key="d0">Fuel Services</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">SMITHS-FUEL #9334 NORTH LAS VEG NV provides fuel services and supplies to various industries.&lt;</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="RAISING CANES 0915 NORTH LAS VEG NV">
+  <data key="d0">RAISING CANES 0915 NORTH LAS VEG NV</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">RAISING CANES 0915 NORTH LAS VEG NV offers fast food options to customers, including chicken-based menu items.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="AGENT PROVOCATEUR LONDON">
+  <data key="d0">AGENT PROVOCATEUR LONDON</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">AGENT PROVOCATEUR LONDON is a fashion brand known for its provocative and daring designs in the fashion industry.&lt;</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="Fashion Design">
+  <data key="d0">Fashion Design</data>
+  <data key="d3">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d2">AGENT PROVOCATEUR LONDON is a fashion brand known for its provocative and daring designs in the fashion industry.&lt;</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">varo_transactions_corrected.csv</data>
+</node>
+<node id="Expedited Service">
+  <data key="d0">Expedited Service</data>
+  <data key="d1">service</data>
+  <data key="d2">Expedited service is a paid option for faster passport processing.</data>
+  <data key="d3">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Passport Book">
+  <data key="d0">Passport Book</data>
+  <data key="d1">category</data>
+  <data key="d2">The U.S. Passport Book is a travel document that allows entry into international destinations.</data>
+  <data key="d3">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Passport Card">
+  <data key="d0">Passport Card</data>
+  <data key="d1">category</data>
+  <data key="d2">The U.S. Passport Card is a travel document that allows entry at land and sea ports of entry for certain countries.</data>
+  <data key="d3">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="U.S. Department of State">
+  <data key="d0">U.S. Department of State</data>
+  <data key="d1">organization</data>
+  <data key="d2">The U.S. Department of State is the government agency responsible for issuing U.S. passports.</data>
+  <data key="d3">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="National Passport Information Center">
+  <data key="d0">National Passport Information Center</data>
+  <data key="d1">organization</data>
+  <data key="d2">The National Passport Information Center is a resource for passport-related information and assistance.</data>
+  <data key="d3">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="U.S. Citizenship">
+  <data key="d0">U.S. Citizenship</data>
+  <data key="d1">category</data>
+  <data key="d2">U.S. citizenship refers to the status of being a citizen of the United States.</data>
+  <data key="d3">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Canada">
+  <data key="d0">Canada</data>
+  <data key="d1">geo</data>
+  <data key="d2">Canada is a country that shares a border with the United States.</data>
+  <data key="d3">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Mexico">
+  <data key="d0">Mexico</data>
+  <data key="d1">geo</data>
+  <data key="d2">Mexico is a country that shares a border with the United States.</data>
+  <data key="d3">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Caribbean">
+  <data key="d0">Caribbean</data>
+  <data key="d1">category</data>
+  <data key="d2">The Caribbean is a region of islands in the Atlantic Ocean.</data>
+  <data key="d3">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Bermuda">
+  <data key="d0">Bermuda</data>
+  <data key="d1">geo</data>
+  <data key="d2">Bermuda is a British Overseas Territory in the North Atlantic Ocean.</data>
+  <data key="d3">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="22 USC 214">
+  <data key="d0">22 USC 214</data>
+  <data key="d1">category</data>
+  <data key="d2">22 USC 214 is a section of U.S. law related to passports.</data>
+  <data key="d3">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="22 C.F.R. 22.1">
+  <data key="d0">22 C.F.R. 22.1</data>
+  <data key="d1">category</data>
+  <data key="d2">22 C.F.R. 22.1 is a regulation related to passports.</data>
+  <data key="d3">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="22 C.F.R. 51.50-56">
+  <data key="d0">22 C.F.R. 51.50-56</data>
+  <data key="d1">category</data>
+  <data key="d2">22 C.F.R. 51.50-56 is a regulation related to passport fees.</data>
+  <data key="d3">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Application for U.S. Passport">
+  <data key="d0">Application for U.S. Passport</data>
+  <data key="d3">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d2">The U.S. Department of State is responsible for processing passport applications.&lt;SEP&gt;The U.S. Department of State processes passport applications.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Citizenship">
+  <data key="d0">Citizenship</data>
+  <data key="d3">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d2">A U.S. birth certificate is required to establish citizenship.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="U.S. birth certificate">
+  <data key="d0">U.S. birth certificate</data>
+  <data key="d3">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d2">A U.S. birth certificate is required to establish citizenship.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Fully-Valid, Undamaged U.S. Passport">
+  <data key="d0">Fully-Valid, Undamaged U.S. Passport</data>
+  <data key="d3">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d2">A fully-valid, undamaged U.S. passport may be used as evidence of citizenship.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Consular Report of Birth Abroad or Certification of Birth">
+  <data key="d0">Consular Report of Birth Abroad or Certification of Birth</data>
+  <data key="d3">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d2">A Consular Report of Birth Abroad or Certification of Birth is required to establish citizenship.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Certificate of Naturalization or Citizenship">
+  <data key="d0">Certificate of Naturalization or Citizenship</data>
+  <data key="d3">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d2">A Certificate of Naturalization or Citizenship is required to establish citizenship.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="U.S. Birth Certificate">
+  <data key="d0">U.S. Birth Certificate</data>
+  <data key="d3">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d2">A U.S. birth certificate is required to establish citizenship.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Driver's License">
+  <data key="d0">Driver's License</data>
+  <data key="d3">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d2">A driver's license is an example of a government-issued ID that can be used as evidence of identity.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Identification">
+  <data key="d0">Identification</data>
+  <data key="d3">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d2">A driver's license is an example of a government-issued ID that can be used as evidence of identity.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Hair Color">
+  <data key="d0">Hair Color</data>
+  <data key="d3">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d2">Raul Pineda has hair color.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Raul Pineda">
+  <data key="d0">Raul Pineda</data>
+  <data key="d3">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d2">Raul Pineda has hair color.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Eye Color">
+  <data key="d0">Eye Color</data>
+  <data key="d3">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d2">Raul Pineda has eye color.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Pete Pineda">
+  <data key="d0">Pete Pineda</data>
+  <data key="d3">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d2">Pete Pineda has hair color.'</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Tuyet Pineda">
+  <data key="d0">Tuyet Pineda</data>
+  <data key="d3">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d2">Tuyet Pineda has hair color.'</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Permanent Address">
+  <data key="d0">Permanent Address</data>
+  <data key="d3">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d2">Raul Pineda has a permanent address.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<node id="Additional Contact Phone Number">
+  <data key="d0">Additional Contact Phone Number</data>
+  <data key="d3">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d2">Pete Pineda has an additional contact phone number.'</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">DS11_Complete.pdf</data>
+</node>
+<edge source="MultiFileRAG System" target="Local LLM Integration">
+  <data key="d5">16.0</data>
+  <data key="d6">The MultiFileRAG System relies on Local LLM Integration for processing files locally without external APIs.&lt;SEP&gt;The system relies on Local LLM Integration to run models locally without relying on external APIs.</data>
+  <data key="d7">integration, API-fee&lt;SEP&gt;integration, API-free</data>
+  <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d9">unknown_source</data>
+</edge>
+<edge source="MultiFileRAG System" target="PDF Processing">
+  <data key="d5">18.0</data>
+  <data key="d6">The system extracts text and insights from PDF files as part of its primary features.</data>
+  <data key="d7">file processing, information extraction</data>
+  <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d9">unknown_source</data>
+</edge>
+<edge source="MultiFileRAG System" target="CSV Processing">
+  <data key="d5">16.0</data>
+  <data key="d6">The system processes CSV files to extract text, statistics, and insights, providing valuable insights into the data.</data>
+  <data key="d7">data analysis, statistical insights</data>
+  <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d9">unknown_source</data>
+</edge>
+<edge source="MultiFileRAG System" target="Image Processing">
+  <data key="d5">14.0</data>
+  <data key="d6">Metadata and descriptions can be extracted from image files using the MultiFileRAG System, enhancing its capabilities.</data>
+  <data key="d7">image processing, metadata extraction</data>
+  <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d9">unknown_source</data>
+</edge>
+<edge source="MultiFileRAG System" target="Advanced Querying">
+  <data key="d5">18.0</data>
+  <data key="d6">The system supports advanced querying across multiple file types using LightRAG's various modes, providing users with more control over their queries.</data>
+  <data key="d7">querying, data retrieval</data>
+  <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d9">unknown_source</data>
+</edge>
+<edge source="MultiFileRAG System" target="Web UI">
+  <data key="d5">16.0</data>
+  <data key="d6">A user-friendly interface allows users to upload files and query the system effectively, making it accessible for all users.</data>
+  <data key="d7">user interface, accessibility</data>
+  <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d9">unknown_source</data>
+</edge>
+<edge source="LightRAG" target="Ollama">
+  <data key="d5">8.0</data>
+  <data key="d6">LightRAG is powered by Ollama technology, enabling local LLM integration with the MultiFileRAG System, allowing for API-free processing of files.</data>
+  <data key="d7">integration, API-fee</data>
+  <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
+  <data key="d9">unknown_source</data>
+</edge>
+<edge source="VESTA" target="AT&amp;T PREPAID 866-608-3007 OR">
+  <data key="d5">8.0</data>
+  <data key="d6">Vesta and AT&amp;T PREPAID are related as prepaid service providers offering wireless plans and services, sharing common customers and interests.</data>
+  <data key="d7">telecommunications industry, customer base</data>
+  <data key="d8">chunk-765b5900669d914fdef483eecc2764ae</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="TOYOTA ACH RTL, 01012025" target="AMAZON MARK* ZP2Z75PEO HTTPSAMAZON. C WA ">
+  <data key="d5">7.0</data>
+  <data key="d6">Amazon's e-commerce platform and Toyota's automotive products are related as they both cater to customer needs and preferences.</data>
+  <data key="d7">e-commerce, automotive industry</data>
+  <data key="d8">chunk-765b5900669d914fdef483eecc2764ae</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="TACO BELL 731909 702-644-9272 NV" target="SMITHS-FUEL #9334 NORTH LAS VEG NV">
+  <data key="d5">9.0</data>
+  <data key="d6">Taco Bell and Smith's Fuel are related as they both operate in the fast-food and convenience store industries, serving customers and meeting their needs.</data>
+  <data key="d7">fast food industry, customer service</data>
+  <data key="d8">chunk-765b5900669d914fdef483eecc2764ae</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="SMITHS-FUEL #9334 NORTH LAS VEG NV" target="Fuel Services">
+  <data key="d5">9.0</data>
+  <data key="d6">SMITHS-FUEL #9334 NORTH LAS VEG NV provides fuel services and supplies to various industries.&lt;</data>
+  <data key="d7">fuel, energy</data>
+  <data key="d8">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="Amazon" target="Payment">
+  <data key="d5">8.0</data>
+  <data key="d6">Amazon processed payments.</data>
+  <data key="d7">financial transaction, e-commerce</data>
+  <data key="d8">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="Payment" target="WILBER INSURANCE">
+  <data key="d5">14.0</data>
+  <data key="d6">WILBER INSURANCE received payments for insurance premiums and claims.&lt;SEP&gt;WILBER INSURANCE received payments.</data>
+  <data key="d7">insurance payment, financial transaction</data>
+  <data key="d8">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="Payment" target="Amazon MARK* ZX7CO7S32">
+  <data key="d5">8.0</data>
+  <data key="d6">Amazon MARK* ZX7CO7S32 processed payments for various transactions.</data>
+  <data key="d7">financial transaction, e-Commerce</data>
+  <data key="d8">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="Ext Trnsfr" target="JPMorgan Chase">
+  <data key="d5">18.0</data>
+  <data key="d6">JPMorgan Chase transferred money externally for international transactions.&lt;SEP&gt;JPMorgan Chase transferred money externally.</data>
+  <data key="d7">financial transfer, banking</data>
+  <data key="d8">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="Google One" target="g.co/helppay">
+  <data key="d5">10.0</data>
+  <data key="d6">Google One provided cloud storage services.</data>
+  <data key="d7">cloud computing, data storage</data>
+  <data key="d8">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="INS PREM" target="PROG DIRECT INS">
+  <data key="d5">16.0</data>
+  <data key="d6">PROG DIRECT INS provided direct insurance premiums to policyholders.&lt;&lt;SEP&gt;PROG DIRECT INS provided insurance premiums.</data>
+  <data key="d7">insurance service, premium payment</data>
+  <data key="d8">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="Government Agency" target="UNITED CONCORDIA GOVT">
+  <data key="d5">18.0</data>
+  <data key="d6">UNITED CONCORDIA GOVT is a government agency providing public services and infrastructure to citizens.&lt;&lt;SEP&gt;UNITED CONCORDIA GOVT is a government agency providing services.</data>
+  <data key="d7">government, public service</data>
+  <data key="d8">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="Google One g.co/helppay" target="g.co/ helppay ">
+  <data key="d5">10.0</data>
+  <data key="d6">Google One g.co/helppay provided cloud storage services to users.&lt;</data>
+  <data key="d7">cloud computing, data storage</data>
+  <data key="d8">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="Fast Food" target="TACO BELL 731909">
+  <data key="d5">8.0</data>
+  <data key="d6">TACO BELL 731909 offers fast food options to customers, including Mexican-inspired menu items.</data>
+  <data key="d7">fast food, dining</data>
+  <data key="d8">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="Fast Food" target="RAISING CANES 0915 NORTH LAS VEG NV">
+  <data key="d5">8.0</data>
+  <data key="d6">RAISING CANES 0915 NORTH LAS VEG NV offers fast food options to customers, including chicken-based menu items.</data>
+  <data key="d7">fast food, dining</data>
+  <data key="d8">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="AGENT PROVOCATEUR LONDON" target="Fashion Design">
+  <data key="d5">9.0</data>
+  <data key="d6">AGENT PROVOCATEUR LONDON is a fashion brand known for its provocative and daring designs in the fashion industry.&lt;</data>
+  <data key="d7">fashion, design</data>
+  <data key="d8">chunk-61b9c933e13d6720e66942d981a8b21b</data>
+  <data key="d9">varo_transactions_corrected.csv</data>
+</edge>
+<edge source="Expedited Service" target="Passport Book">
+  <data key="d5">16.0</data>
+  <data key="d6">The expedited service is available for an additional fee and can speed up the processing time for passport book applications.</data>
+  <data key="d7">time-saving, convenience</data>
+  <data key="d8">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Passport Book" target="U.S. Department of State">
+  <data key="d5">18.0</data>
+  <data key="d6">The U.S. Department of State issues U.S. passports, including the passport book, to qualified applicants.</data>
+  <data key="d7">issuance, responsibility</data>
+  <data key="d8">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Passport Card" target="National Passport Information Center">
+  <data key="d5">16.0</data>
+  <data key="d6">The National Passport Information Center provides information and assistance on passport-related matters, including the passport card.</data>
+  <data key="d7">information, support</data>
+  <data key="d8">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="U.S. Department of State" target="22 USC 214">
+  <data key="d5">7.0</data>
+  <data key="d6">The U.S. Department of State is responsible for enforcing the provisions of 22 USC 214 related to passports.</data>
+  <data key="d7">compliance, regulation</data>
+  <data key="d8">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="U.S. Department of State" target="Application for U.S. Passport">
+  <data key="d5">18.0</data>
+  <data key="d6">The U.S. Department of State is responsible for processing passport applications.&lt;SEP&gt;The U.S. Department of State processes passport applications.</data>
+  <data key="d7">passport application, government agency</data>
+  <data key="d8">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="U.S. Department of State" target="National Passport Information Center">
+  <data key="d5">16.0</data>
+  <data key="d6">The National Passport Information Center provides information and assistance with passport applications through the U.S. Department of State.</data>
+  <data key="d7">information center, government agency</data>
+  <data key="d8">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="National Passport Information Center" target="U.S. Citizenship">
+  <data key="d5">8.0</data>
+  <data key="d6">The National Passport Information Center provides information and assistance on passport-related matters, including U.S. citizenship.</data>
+  <data key="d7">information, support</data>
+  <data key="d8">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Canada" target="Mexico">
+  <data key="d5">6.0</data>
+  <data key="d6">Canada and Mexico are neighboring countries with a shared border.")</data>
+  <data key="d7">geographical proximity, international relations</data>
+  <data key="d8">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Caribbean" target="Bermuda">
+  <data key="d5">7.0</data>
+  <data key="d6">The Caribbean is a region that includes the island nation of Bermuda.")</data>
+  <data key="d7">geographical location, cultural connection</data>
+  <data key="d8">chunk-0a57c59314ec98fa6538fa7339b02c93</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Application for U.S. Passport" target="Citizenship">
+  <data key="d5">10.0</data>
+  <data key="d6">A passport application is a request to obtain or renew a U.S. passport, which is evidence of citizenship.</data>
+  <data key="d7">citizenship, documentation</data>
+  <data key="d8">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Citizenship" target="U.S. birth certificate">
+  <data key="d5">10.0</data>
+  <data key="d6">A U.S. birth certificate is required to establish citizenship.</data>
+  <data key="d7">citizenship, documentation</data>
+  <data key="d8">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Citizenship" target="Fully-Valid, Undamaged U.S. Passport">
+  <data key="d5">19.0</data>
+  <data key="d6">A fully-valid, undamaged U.S. passport may be used as evidence of citizenship.</data>
+  <data key="d7">citizenship, documentation</data>
+  <data key="d8">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Citizenship" target="Consular Report of Birth Abroad or Certification of Birth">
+  <data key="d5">19.0</data>
+  <data key="d6">A Consular Report of Birth Abroad or Certification of Birth is required to establish citizenship.</data>
+  <data key="d7">citizenship, documentation</data>
+  <data key="d8">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Citizenship" target="Certificate of Naturalization or Citizenship">
+  <data key="d5">18.0</data>
+  <data key="d6">A Certificate of Naturalization or Citizenship is required to establish citizenship.</data>
+  <data key="d7">citizenship, documentation</data>
+  <data key="d8">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Citizenship" target="U.S. Birth Certificate">
+  <data key="d5">9.0</data>
+  <data key="d6">A U.S. birth certificate is required to establish citizenship.</data>
+  <data key="d7">citizenship, documentation</data>
+  <data key="d8">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Driver's License" target="Identification">
+  <data key="d5">10.0</data>
+  <data key="d6">A driver's license is an example of a government-issued ID that can be used as evidence of identity.</data>
+  <data key="d7">identification, documentation</data>
+  <data key="d8">chunk-ece0a7109e80980951c2b5b761283904</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Hair Color" target="Raul Pineda">
+  <data key="d5">8.0</data>
+  <data key="d6">Raul Pineda has hair color.</data>
+  <data key="d7">physical characteristic, personal trait</data>
+  <data key="d8">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Hair Color" target="Pete Pineda">
+  <data key="d5">7.0</data>
+  <data key="d6">Pete Pineda has hair color.'</data>
+  <data key="d7">physical characteristic, personal trait</data>
+  <data key="d8">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Hair Color" target="Tuyet Pineda">
+  <data key="d5">8.0</data>
+  <data key="d6">Tuyet Pineda has hair color.'</data>
+  <data key="d7">physical characteristic, personal trait</data>
+  <data key="d8">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Raul Pineda" target="Eye Color">
+  <data key="d5">8.0</data>
+  <data key="d6">Raul Pineda has eye color.</data>
+  <data key="d7">physical characteristic, personal trait</data>
+  <data key="d8">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Raul Pineda" target="Permanent Address">
+  <data key="d5">9.0</data>
+  <data key="d6">Raul Pineda has a permanent address.</data>
+  <data key="d7">residence location, personal information</data>
+  <data key="d8">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Eye Color" target="Pete Pineda">
+  <data key="d5">7.0</data>
+  <data key="d6">Pete Pineda has eye color.'</data>
+  <data key="d7">physical characteristic, personal trait</data>
+  <data key="d8">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Eye Color" target="Tuyet Pineda">
+  <data key="d5">8.0</data>
+  <data key="d6">Tuyet Pineda has eye color.'</data>
+  <data key="d7">physical characteristic, personal trait</data>
+  <data key="d8">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+<edge source="Pete Pineda" target="Additional Contact Phone Number">
+  <data key="d5">8.0</data>
+  <data key="d6">Pete Pineda has an additional contact phone number.'</data>
+  <data key="d7">method of communication, personal information</data>
+  <data key="d8">chunk-93e017b224c6c0a021d3b061571863ae</data>
+  <data key="d9">DS11_Complete.pdf</data>
+</edge>
+</graph></graphml>

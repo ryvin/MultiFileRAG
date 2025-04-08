@@ -42,10 +42,10 @@ MultiFileRAG extends the capabilities of LightRAG to provide enhanced data analy
    ```bash
    # For PDF processing
    pip install PyPDF2
-   
+
    # For additional file type support (optional)
-   pip install textract
-   
+   pip install "unstructured[all-docs]"
+
    # For async support
    pip install nest_asyncio
    ```

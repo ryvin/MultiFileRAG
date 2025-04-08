@@ -9,8 +9,8 @@ import numpy as np
 from PIL import Image
 
 # Optional dependencies
-textract = None
 PyPDF2 = None
+unstructured_available = False
 
 try:
     import PyPDF2
@@ -18,9 +18,10 @@ except ImportError:
     print("Warning: PyPDF2 not installed. PDF processing will be limited.")
 
 try:
-    import textract
+    from unstructured.partition.auto import partition
+    unstructured_available = True
 except ImportError:
-    print("Warning: textract not installed. Text extraction from some file types will be limited.")
+    print("Warning: unstructured not installed. Text extraction from some file types will be limited.")
 
 def extract_text_from_pdf(file_path):
     """Extract text from PDF files."""
@@ -53,12 +54,13 @@ def extract_text_from_pdf(file_path):
             print(f"Error extracting text from PDF with PyPDF2 {file_path}: {e}")
             text_content = ""
 
-    # If PyPDF2 didn't extract much text or is not available, try textract as a fallback
-    if (len(text_content.strip()) < 100) and (textract is not None):
+    # If PyPDF2 didn't extract much text or is not available, try unstructured as a fallback
+    if (len(text_content.strip()) < 100) and unstructured_available:
         try:
-            text_content = textract.process(file_path).decode('utf-8')
+            elements = partition(file_path)
+            text_content = "\n\n".join([str(el) for el in elements])
         except Exception as e2:
-            print(f"Error with textract fallback: {e2}")
+            print(f"Error with unstructured fallback: {e2}")
             if len(text_content.strip()) == 0:
                 return None
 
@@ -223,16 +225,17 @@ def process_file(file_path):
             print(f"Error reading text file {file_path}: {e}")
             return None
     else:
-        # For other file types, try textract if available
-        if textract is not None:
+        # For other file types, try unstructured if available
+        if unstructured_available:
             try:
-                print(f"Processing file with textract: {file_path}")
-                return textract.process(file_path).decode('utf-8')
+                print(f"Processing file with unstructured: {file_path}")
+                elements = partition(file_path)
+                return "\n\n".join([str(el) for el in elements])
             except Exception as e:
                 print(f"Error processing file {file_path}: {e}")
                 return None
         else:
-            print(f"Cannot process file {file_path}: textract not installed")
+            print(f"Cannot process file {file_path}: unstructured not installed")
             return None
 
 def process_directory(directory_path, output_directory=None):

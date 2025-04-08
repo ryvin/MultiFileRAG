@@ -14,7 +14,7 @@ dependencies:
   - python-dotenv>=1.0.0
   - pip:
     - lightrag-hku[api]
-    - textract>=1.6.3
+    - "unstructured[all-docs]>=0.17.0"
     - PyPDF2>=3.0.0
     - fastapi>=0.104.0
     - uvicorn>=0.23.2

@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d9" for="edge" attr.name="file_path" attr.type="string" />
+  <key id="d8" for="edge" attr.name="source_id" attr.type="string" />
+  <key id="d7" for="edge" attr.name="keywords" attr.type="string" />
+  <key id="d6" for="edge" attr.name="description" attr.type="string" />
+  <key id="d5" for="edge" attr.name="weight" attr.type="double" />
+  <key id="d4" for="node" attr.name="file_path" attr.type="string" />
+  <key id="d3" for="node" attr.name="source_id" attr.type="string" />
+  <key id="d2" for="node" attr.name="description" attr.type="string" />
+  <key id="d1" for="node" attr.name="entity_type" attr.type="string" />
+  <key id="d0" for="node" attr.name="entity_id" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="Jane Smith">
+      <data key="d0">Jane Smith</data>
+      <data key="d1">person</data>
+      <data key="d2">Jane Smith is a data scientist with 28 years old.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Bob Johnson">
+      <data key="d0">Bob Johnson</data>
+      <data key="d1">person</data>
+      <data key="d2">Bob Johnson is a project manager with 35 years old.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Alice Brown">
+      <data key="d0">Alice Brown</data>
+      <data key="d1">person</data>
+      <data key="d2">Alice Brown is a marketing specialist with 42 years old.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Charlie Davis">
+      <data key="d0">Charlie Davis</data>
+      <data key="d1">person</data>
+      <data key="d2">Charlie Davis is a designer with 25 years old.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Eva Wilson">
+      <data key="d0">Eva Wilson</data>
+      <data key="d1">person</data>
+      <data key="d2">Eva Wilson is an engineer with 33 years old.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Frank Miller">
+      <data key="d0">Frank Miller</data>
+      <data key="d1">person</data>
+      <data key="d2">Frank Miller is a finance specialist with 45 years old.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Grace Lee">
+      <data key="d0">Grace Lee</data>
+      <data key="d1">person</data>
+      <data key="d2">Grace Lee is a data scientist with 29 years old.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Henry Taylor">
+      <data key="d0">Henry Taylor</data>
+      <data key="d1">person</data>
+      <data key="d2">Henry Taylor is a sales representative with 38 years old.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Ivy Martinez">
+      <data key="d0">Ivy Martinez</data>
+      <data key="d1">person</data>
+      <data key="d2">Ivy Martinez is a customer support specialist with 31 years old.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="John Doe">
+      <data key="d0">John Doe</data>
+      <data key="d1">person</data>
+      <data key="d2">John Doe is an employee with 30 years old.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Engineering">
+      <data key="d0">Engineering</data>
+      <data key="d1">organization</data>
+      <data key="d2">The Engineering department is responsible for product development and design.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Data Science">
+      <data key="d0">Data Science</data>
+      <data key="d1">category</data>
+      <data key="d2">Data Science is a field that involves extracting insights from large datasets.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Project Management">
+      <data key="d0">Project Management</data>
+      <data key="d1">category</data>
+      <data key="d2">Project Management is the process of planning, executing, and controlling projects to achieve specific goals.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Marketing">
+      <data key="d0">Marketing</data>
+      <data key="d1">category</data>
+      <data key="d2">Marketing is a field that involves promoting products or services to target audiences.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Finance">
+      <data key="d0">Finance</data>
+      <data key="d1">organization</data>
+      <data key="d2">The Finance department is responsible for managing the company's financial resources and making investment decisions.</data>
+      <data key="d3">chunk-82c13f47e09db433923bce3ccd57ebee</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="MultiFileRAG System">
+      <data key="d0">MultiFileRAG System</data>
+      <data key="d1">organization</data>
+      <data key="d2">The MultiFileRAG System is a specialized implementation of LightRAG for processing PDF, CSV, and image files, providing enhanced data analysis, visualization, and querying capabilities powered by local LLMs through Ollama.</data>
+      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Local LLM Integration">
+      <data key="d0">Local LLM Integration</data>
+      <data key="d1">category</data>
+      <data key="d2">Local LLM Integration uses Ollama to run models locally without relying on external APIs, a key feature of the MultiFileRAG System.</data>
+      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="PDF Processing">
+      <data key="d0">PDF Processing</data>
+      <data key="d1">category</data>
+      <data key="d2">The MultiFileRAG System extracts text and insights from PDF files, one of its primary features.&lt;SEP&gt;The system extracts text and insights from PDF files, one of its primary features.</data>
+      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="CSV Processing">
+      <data key="d0">CSV Processing</data>
+      <data key="d1">category</data>
+      <data key="d2">The system also processes CSV files to extract text, statistics, and insights.&lt;SEP&gt;The system processes CSV files to extract text, statistics, and insights, providing valuable insights into the data.</data>
+      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Image Processing">
+      <data key="d0">Image Processing</data>
+      <data key="d1">category</data>
+      <data key="d2">Metadata and descriptions can be extracted from image files using the MultiFileRAG System, enhancing its capabilities.&lt;SEP&gt;Metadata and descriptions can be extracted from image files using the MultiFileRAG System.</data>
+      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Advanced Querying">
+      <data key="d0">Advanced Querying</data>
+      <data key="d1">category</data>
+      <data key="d2">The system supports advanced querying across multiple file types using LightRAG's various modes, providing users with more control over their queries.&lt;SEP&gt;The system supports advanced querying across multiple file types using LightRAG's various modes.</data>
+      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Web UI">
+      <data key="d0">Web UI</data>
+      <data key="d1">category</data>
+      <data key="d2">A user-friendly interface allows users to upload files and query the system effectively, making it accessible for all users.&lt;SEP&gt;A user-friendly interface allows users to upload files and query the system effectively.</data>
+      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="LightRAG">
+      <data key="d0">LightRAG</data>
+      <data key="d1">organization</data>
+      <data key="d2">LightRAG is a specialized implementation of LightRAG for processing PDF, CSV, and image files, providing enhanced data analysis, visualization, and querying capabilities powered by local LLMs through Ollama.</data>
+      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="Ollama">
+      <data key="d0">Ollama</data>
+      <data key="d1">category</data>
+      <data key="d2">Ollama is the technology that enables local LLM integration with the MultiFileRAG System, allowing for API-free processing of files.</data>
+      <data key="d3">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <edge source="MultiFileRAG System" target="Local LLM Integration">
+      <data key="d5">16.0</data>
+      <data key="d6">The MultiFileRAG System relies on Local LLM Integration for processing files locally without external APIs.&lt;SEP&gt;The system relies on Local LLM Integration to run models locally without relying on external APIs.</data>
+      <data key="d7">integration, API-fee&lt;SEP&gt;integration, API-free</data>
+      <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="MultiFileRAG System" target="PDF Processing">
+      <data key="d5">18.0</data>
+      <data key="d6">The system extracts text and insights from PDF files as part of its primary features.</data>
+      <data key="d7">file processing, information extraction</data>
+      <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="MultiFileRAG System" target="CSV Processing">
+      <data key="d5">16.0</data>
+      <data key="d6">The system processes CSV files to extract text, statistics, and insights, providing valuable insights into the data.</data>
+      <data key="d7">data analysis, statistical insights</data>
+      <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="MultiFileRAG System" target="Image Processing">
+      <data key="d5">14.0</data>
+      <data key="d6">Metadata and descriptions can be extracted from image files using the MultiFileRAG System, enhancing its capabilities.</data>
+      <data key="d7">image processing, metadata extraction</data>
+      <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="MultiFileRAG System" target="Advanced Querying">
+      <data key="d5">18.0</data>
+      <data key="d6">The system supports advanced querying across multiple file types using LightRAG's various modes, providing users with more control over their queries.</data>
+      <data key="d7">querying, data retrieval</data>
+      <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="MultiFileRAG System" target="Web UI">
+      <data key="d5">16.0</data>
+      <data key="d6">A user-friendly interface allows users to upload files and query the system effectively, making it accessible for all users.</data>
+      <data key="d7">user interface, accessibility</data>
+      <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="LightRAG" target="Ollama">
+      <data key="d5">8.0</data>
+      <data key="d6">LightRAG is powered by Ollama technology, enabling local LLM integration with the MultiFileRAG System, allowing for API-free processing of files.</data>
+      <data key="d7">integration, API-fee</data>
+      <data key="d8">chunk-afcda711968312a0e72d47408782032f</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+  </graph>
+</graphml>

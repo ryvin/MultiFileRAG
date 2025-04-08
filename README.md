@@ -2,6 +2,10 @@
 
 A specialized implementation of LightRAG for processing multiple file types including PDF, CSV, and image files, powered by local LLMs through Ollama. MultiFileRAG provides a complete solution for document analysis, retrieval, and question answering using local large language models.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Ollama](https://img.shields.io/badge/Ollama-Powered-green.svg)](https://ollama.ai/)
+
 ## Overview
 
 MultiFileRAG extends the capabilities of [LightRAG](https://github.com/HKUDS/LightRAG) to provide enhanced data analysis, visualization, and querying capabilities across different file formats. It's designed to work with local LLMs through Ollama, making it ideal for privacy-conscious applications and offline use cases.
@@ -21,7 +25,8 @@ The system uses a Retrieval-Augmented Generation (RAG) approach to:
   - Configurable model selection through environment variables
 
 - **Multiple File Type Support**:
-  - **PDF Processing**: Extract text and metadata from PDF files with structure preservation
+  - **Enhanced PDF Processing**: Extract text and metadata from PDF files with multiple methods (PyPDF2, unstructured, pdfplumber)
+  - **Robust PDF Handling**: Automatically handle problematic PDFs that cause errors in standard processors
   - **CSV Processing**: Extract text, statistics, and insights from CSV files with correlation analysis
   - **Image Processing**: Extract metadata and descriptions from image files
   - **Text Files**: Process plain text files (.txt, .md) with formatting preservation
@@ -42,6 +47,12 @@ The system uses a Retrieval-Augmented Generation (RAG) approach to:
   - **Web UI**: User-friendly interface for uploading files and querying the system
   - **CLI Interface**: Command-line tools for processing files and querying the system
   - **Python API**: Programmatic access for integration with other applications
+
+- **Utilities & Debugging**:
+  - **Centralized Utilities**: Comprehensive utilities module for common operations
+  - **Monitoring Tools**: Real-time monitoring of document processing
+  - **Diagnostic Scripts**: Tools for checking system status and troubleshooting
+  - **Unit Tests**: Test suite for verifying functionality
 
 ## Installation
 
@@ -210,20 +221,30 @@ You can also use MultiFileRAG programmatically in your Python code:
 
 ```python
 import asyncio
-from multifilerag_core import MultiFileRAG
+from multifilerag_core import MultiFileRAG, create_multifilerag
+from multifilerag_utils import get_document_counts, check_ollama_status
 
 async def main():
-    # Initialize MultiFileRAG
-    mfrag = MultiFileRAG(
+    # Check if Ollama is running
+    ollama_running, version = check_ollama_status()
+    if not ollama_running:
+        print(f"Error: Ollama is not running: {version}")
+        return
+
+    # Initialize MultiFileRAG using the convenience function
+    mfrag = await create_multifilerag(
         working_dir="./rag_storage",
         input_dir="./inputs",
         llm_model_name="deepseek-r1:32b",
         embedding_model_name="nomic-embed-text"
     )
-    await mfrag.initialize()
 
     # Process a file
-    mfrag.process_and_insert_file("./inputs/your_document.pdf")
+    await mfrag.process_and_insert_file("./inputs/your_document.pdf")
+
+    # Check document counts
+    counts = get_document_counts()
+    print(f"Document counts: {counts}")
 
     # Query the system
     response = mfrag.query("What is in the document?", mode="mix")
@@ -283,13 +304,60 @@ To change the LLM or embedding model:
 
 ## Query Modes
 
-MultiFileRAG supports various query modes inherited from LightRAG:
+MultiFileRAG supports various query modes inherited from LightRAG, each optimized for different types of questions and document sets:
 
-- **naive**: Basic search without advanced techniques. Fast but less accurate.
-- **local**: Focuses on context-dependent information within documents. Good for specific factual queries.
-- **global**: Utilizes global knowledge across all documents. Better for general questions.
-- **hybrid**: Combines local and global retrieval methods. Balances specificity and breadth.
-- **mix**: Integrates knowledge graph and vector retrieval. Recommended for most cases as it provides the most comprehensive results.
+### Available Query Modes
+
+- **naive**:
+  - Basic search without advanced techniques
+  - Directly retrieves chunks based on vector similarity
+  - Fast but less accurate for complex queries
+  - Best for: Simple factual questions, small document sets
+  - Example query: "What is the revenue for Q2 2023?"
+
+- **local**:
+  - Focuses on context-dependent information within documents
+  - Retrieves chunks and their surrounding context
+  - Good for specific factual queries requiring context
+  - Best for: Questions about specific details within documents
+  - Example query: "What were the key findings in the security audit?"
+
+- **global**:
+  - Utilizes global knowledge across all documents
+  - Considers document-level relationships and metadata
+  - Better for general questions spanning multiple documents
+  - Best for: Broad questions, trend analysis, comparisons
+  - Example query: "How have sales trends changed over the past year?"
+
+- **hybrid**:
+  - Combines local and global retrieval methods
+  - Balances specificity and breadth of information
+  - Good balance between accuracy and comprehensive results
+  - Best for: Complex questions requiring both specific details and broader context
+  - Example query: "What factors contributed to the decline in customer satisfaction and how do they relate to product changes?"
+
+- **mix**:
+  - Integrates knowledge graph and vector retrieval
+  - Leverages entity relationships and semantic similarity
+  - Most comprehensive but potentially slower
+  - Best for: Complex questions involving relationships between entities
+  - Example query: "How do the financial performance metrics relate to the organizational changes described in the annual report?"
+
+### Optimizing Query Mode Selection
+
+For best results:
+
+1. **Start with hybrid mode** for most queries
+2. **Use mix mode** when you need to understand relationships between entities
+3. **Use local mode** for specific factual questions about a particular document
+4. **Use global mode** for questions that span multiple documents
+5. **Use naive mode** when you need quick results for simple questions
+
+### Customizing TOP_K Parameter
+
+The TOP_K parameter controls how many documents are retrieved for each query. Increasing this value will make the system consider more documents, potentially providing more comprehensive answers at the cost of processing time.
+
+You can adjust this in the web UI under Query Settings.
 
 ## System Architecture
 
@@ -422,7 +490,7 @@ Here's a typical workflow for using MultiFileRAG:
 
 ## Troubleshooting
 
-### Common Issues
+### Common Issues and Solutions
 
 #### Installation Problems
 
@@ -430,19 +498,45 @@ Here's a typical workflow for using MultiFileRAG:
   ```
   Error: No module named 'xyz'
   ```
-  Solution: Install the required dependencies using pip:
-  ```bash
-  pip install -r requirements.txt
-  ```
+  **Solution**:
+  - Install the required dependencies using pip:
+    ```bash
+    pip install -r requirements.txt
+    ```
+  - For specific modules, install them directly:
+    ```bash
+    pip install unstructured PyPDF2 pandas nest_asyncio
+    ```
 
 - **LightRAG Installation Fails**:
   ```
   Error importing LightRAG modules
   ```
-  Solution: Run the installation script with the correct Python environment:
-  ```bash
-  python install_lightrag.py
+  **Solution**:
+  - Run the installation script with the correct Python environment:
+    ```bash
+    python install_lightrag.py
+    ```
+  - Check if you have Git installed (required for installation)
+  - Ensure you have proper permissions to install packages
+
+- **Conda Environment Issues**:
   ```
+  CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+  ```
+  **Solution**:
+  - Initialize conda for your shell:
+    ```bash
+    # For PowerShell
+    conda-init
+
+    # For Bash
+    conda init bash
+    ```
+  - Or use the full path to conda:
+    ```bash
+    C:\ProgramData\anaconda3\Scripts\conda.exe activate multifilerag
+    ```
 
 #### Server Issues
 
@@ -450,38 +544,87 @@ Here's a typical workflow for using MultiFileRAG:
   ```
   Error: Ollama server is not running
   ```
-  Solution: Start Ollama in a separate terminal:
-  ```bash
-  ollama serve
-  ```
+  **Solution**:
+  - Start Ollama in a separate terminal:
+    ```bash
+    ollama serve
+    ```
+  - Check if Ollama is installed correctly
+  - Verify network settings if using a remote Ollama server
 
 - **Port Already in Use**:
   ```
   Error: Address already in use
   ```
-  Solution: Change the port in the .env file or stop the process using that port.
+  **Solution**:
+  - Change the port in the .env file:
+    ```
+    PORT=9622  # Change from default 9621
+    ```
+  - Find and stop the process using the port:
+    ```bash
+    # Windows
+    netstat -ano | findstr :9621
+    taskkill /PID <PID> /F
+
+    # Linux/Mac
+    lsof -i :9621
+    kill -9 <PID>
+    ```
+
+- **Server Crashes or Hangs**:
+  **Solution**:
+  - Check system resources (CPU, RAM, disk space)
+  - Reduce MAX_PARALLEL_INSERT in .env to 1
+  - Increase TIMEOUT value for large documents
+  - Restart both Ollama and the MultiFileRAG server
 
 #### Model Issues
 
 - **Model Not Found**:
   ```
-  Error: Failed to get model
+  Error: Failed to get model "deepseek-r1:32b"
   ```
-  Solution: Pull the required model using Ollama:
-  ```bash
-  ollama pull deepseek-r1:32b
-  ollama pull nomic-embed-text
-  ```
+  **Solution**:
+  - Pull the required model using Ollama:
+    ```bash
+    ollama pull deepseek-r1:32b
+    ollama pull nomic-embed-text
+    ```
+  - Check internet connection (required for initial model download)
+  - Verify disk space (models can be several GB)
 
 - **Embedding Dimension Mismatch**:
   ```
   Error: Embedding dim mismatch, expected: 1024, but loaded: 768
   ```
-  Solution: Clear the vector database and restart with consistent dimensions:
-  ```bash
-  python clear_vector_db.py
+  **Solution**:
+  - Clear the vector database and restart with consistent dimensions:
+    ```bash
+    python clear_vector_db.py
+    ```
+  - Update the .env file with the correct dimension:
+    ```
+    # For bge-m3
+    EMBEDDING_MODEL=bge-m3
+    EMBEDDING_DIM=1024
+
+    # For nomic-embed-text
+    EMBEDDING_MODEL=nomic-embed-text
+    EMBEDDING_DIM=768
+    ```
+
+- **Model Timeout Issues**:
   ```
-  Then update the .env file with the correct dimension.
+  Error: Request timed out after 200 seconds
+  ```
+  **Solution**:
+  - Increase the timeout in .env:
+    ```
+    TIMEOUT=600  # Increase from default
+    ```
+  - Use a smaller model if you don't have GPU acceleration
+  - Reduce MAX_PARALLEL_INSERT to 1 to avoid resource contention
 
 #### File Processing Issues
 
@@ -489,24 +632,159 @@ Here's a typical workflow for using MultiFileRAG:
   ```
   Error processing file: xyz.pdf
   ```
-  Solution:
+  **Solution**:
   - Check file format and encoding (UTF-8 recommended)
   - Ensure file is not corrupted or password-protected
-  - Try converting the file to a different format
+  - Install enhanced PDF processing dependencies:
+    ```bash
+    python install_pdf_dependencies.py
+    # Or run the batch file
+    install_pdf_dependencies.bat
+    ```
+  - For specific file types, install additional dependencies:
+    ```bash
+    pip install "unstructured[pdf]"
+    pip install "unstructured[docx]"
+    ```
+
+- **PDF Processing Errors (list index out of range)**:
+  ```
+  IndexError: list index out of range
+  ```
+  **Solution**:
+  - This is a common error with certain PDF files that have non-standard formatting
+  - The system now automatically handles these files using alternative methods
+  - If you're still encountering issues, install the enhanced PDF dependencies:
+    ```bash
+    python install_pdf_dependencies.py
+    ```
+  - The system will automatically try multiple methods (PyPDF2, unstructured, pdfplumber) to extract text
 
 - **Memory Errors During Processing**:
   ```
   MemoryError or Out of memory
   ```
-  Solution: Reduce the chunk size in the .env file or process smaller files.
+  **Solution**:
+  - Reduce the chunk size in the .env file
+  - Process smaller files or split large files
+  - Increase system swap space
+  - Close other memory-intensive applications
 
-### Debugging Tips
+- **Knowledge Graph Issues**:
+  ```
+  No entities found in knowledge graph
+  ```
+  **Solution**:
+  - Ensure documents contain recognizable entities
+  - Try reprocessing documents with a different LLM model
+  - Check if the LLM model has sufficient context window
+  - Use the "mix" query mode to leverage both vector search and knowledge graph
+
+### Advanced Debugging
+
+#### Checking Document Status
+
+To check the status of documents in the system:
+
+```bash
+python check_docs.py
+```
+
+This will show which documents are pending, processing, processed, or failed.
+
+#### Monitoring Processing
+
+To monitor document processing in real-time:
+
+```bash
+python monitor_processing.py
+```
+
+This will continuously update with the current pipeline status and document counts.
+
+#### Reprocessing Failed Documents
+
+To reprocess documents that failed:
+
+```bash
+python reprocess_docs.py
+```
+
+This will identify failed documents and reprocess them.
+
+#### Using the Utilities Module
+
+The `multifilerag_utils.py` module provides a comprehensive set of utilities for interacting with the system. You can import and use these functions in your own scripts:
+
+```python
+from multifilerag_utils import get_server_url, get_documents, check_ollama_status
+
+# Get server URL from environment variables
+server_url = get_server_url()
+
+# Check if Ollama is running
+is_running, version = check_ollama_status()
+if is_running:
+    print(f"Ollama is running. Version: {version}")
+else:
+    print(f"Ollama is not running: {version}")
+
+# Get document status
+docs = get_documents(server_url)
+if docs:
+    print(f"Found {len(docs.get('statuses', {}).get('PROCESSED', []))} processed documents")
+```
+
+See the `test_multifilerag_utils.py` file for examples of how to use the utilities module.
+
+### General Debugging Tips
 
 1. **Check Logs**: Look for error messages in the terminal output
 2. **Verify Models**: Ensure the required models are pulled in Ollama
 3. **Check File Permissions**: Ensure the application has read/write access to the directories
 4. **Restart Services**: Sometimes restarting Ollama and the MultiFileRAG server resolves issues
 5. **Clean Installation**: In case of persistent issues, try a fresh installation
+6. **Update Dependencies**: Ensure all dependencies are up to date
+7. **Check System Resources**: Monitor CPU, RAM, and disk usage during processing
+8. **Test with Smaller Files**: Verify functionality with smaller, simpler files first
+
+## Project Structure
+
+The MultiFileRAG project is organized into several key components:
+
+### Core Components
+
+- **multifilerag_core.py**: The main module that provides the MultiFileRAG class and core functionality
+- **multifilerag_server.py**: Web server implementation for the REST API
+- **multifilerag_cli.py**: Command-line interface for processing files and querying
+- **multifilerag_utils.py**: Shared utilities for API interaction, Ollama status checking, and file operations
+- **multifile_processor.py**: File processing utilities for different file types
+
+### Utility Scripts
+
+- **check_docs.py**: Check the status of documents in the system
+- **check_document_content.py**: Check if specific documents were properly processed and their content is available
+- **clear_vector_db.py**: Clear the vector database to start fresh
+- **monitor_processing.py**: Monitor document processing in real-time
+- **reprocess_docs.py**: Reprocess failed documents
+
+### Setup Scripts
+
+- **install_dependencies.py**: Install required Python dependencies
+- **install_lightrag.py**: Install LightRAG from source
+- **setup_conda.py**: Set up a Conda environment for MultiFileRAG
+- **setup_multifilerag_server.py**: Set up and configure the MultiFileRAG server
+- **setup_ollama.py**: Set up Ollama and pull required models
+
+### Advanced Processing
+
+- **advanced_csv_image_processor_ollama.py**: Advanced processing for CSV and image files
+- **optimize_for_cpu.py**: Optimize settings for CPU-only environments
+- **prepare_files.py**: Prepare files for processing
+
+### Tests
+
+- **test_multifilerag_utils.py**: Unit tests for the utilities module
 
 ## Performance Optimization
 
@@ -542,6 +820,31 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Based on the [LightRAG](https://github.com/HKUDS/LightRAG) project by HKUDS
 - Uses [Ollama](https://github.com/ollama/ollama) for local LLM support
 - Uses [unstructured](https://github.com/Unstructured-IO/unstructured) for document processing
+
+## Recent Improvements
+
+The MultiFileRAG codebase has undergone significant refactoring and improvements:
+
+### Code Refactoring
+
+- **Centralized Utilities**: Created a comprehensive `multifilerag_utils.py` module that consolidates common functionality
+- **Reduced Redundancy**: Eliminated duplicate code across multiple scripts
+- **Standardized Error Handling**: Implemented consistent error handling patterns
+- **Improved Documentation**: Added detailed docstrings and comments
+
+### Code Cleanup
+
+- **Removed Redundant Files**: Deleted unnecessary and redundant scripts
+- **Organized Imports**: Standardized import organization across files
+- **Fixed Line Length Issues**: Improved code formatting for better readability
+- **Added Unit Tests**: Created a test suite for the utilities module
+
+### Benefits
+
+- **Improved Maintainability**: Cleaner code structure makes maintenance easier
+- **Better Error Handling**: More specific error messages help with debugging
+- **Enhanced Documentation**: Better documentation makes the codebase more accessible
+- **Easier Testing**: Centralized functions are easier to test
 
 ## Contributing
 

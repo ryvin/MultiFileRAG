@@ -8,69 +8,67 @@ import pandas as pd
 import numpy as np
 from PIL import Image
 
-# Optional dependencies
-PyPDF2 = None
+# Document processing dependencies
 unstructured_available = False
 
 try:
-    import PyPDF2
-except ImportError:
-    print("Warning: PyPDF2 not installed. PDF processing will be limited.")
-
-try:
     from unstructured.partition.auto import partition
+    from unstructured.partition.pdf import partition_pdf
     unstructured_available = True
 except ImportError:
-    print("Warning: unstructured not installed. Text extraction from some file types will be limited.")
+    print("Warning: unstructured not installed. Document processing will be limited.")
+    print("Please install unstructured with: pip install 'unstructured[pdf]'")
 
 def extract_text_from_pdf(file_path):
-    """Extract text from PDF files."""
-    text_content = ""
+    """Extract text from PDF files using unstructured library.
 
-    # Check if PyPDF2 is available
-    if PyPDF2 is not None:
+    This function uses the unstructured library to extract text from PDFs,
+    which provides robust handling for a wide variety of PDF formats.
+
+    Args:
+        file_path: Path to the PDF file
+
+    Returns:
+        str: Extracted text or None if extraction failed
+    """
+    if not unstructured_available:
+        print(f"Cannot process PDF {file_path}: unstructured library not installed")
+        print("Please install with: pip install 'unstructured[pdf]'")
+        return None
+
+    try:
+        print(f"Processing PDF with unstructured: {file_path}")
+
+        # Use the PDF-specific partitioner for better results
         try:
-            # First try with PyPDF2
-            with open(file_path, "rb") as pdf_file:
-                pdf_reader = PyPDF2.PdfReader(pdf_file)
-                for page_num in range(len(pdf_reader.pages)):
-                    page = pdf_reader.pages[page_num]
-                    text_content += page.extract_text() + "\n\n"
-
-            # Add metadata about the PDF
-            with open(file_path, "rb") as pdf_file:
-                pdf_reader = PyPDF2.PdfReader(pdf_file)
-                info = pdf_reader.metadata
-                if info:
-                    metadata_text = f"PDF Metadata:\n"
-                    for key, value in info.items():
-                        if key.startswith('/'):
-                            key = key[1:]
-                        metadata_text += f"{key}: {value}\n"
-                    metadata_text += f"Number of pages: {len(pdf_reader.pages)}\n\n"
-                    metadata_text += "PDF Content:\n"
-                    text_content = metadata_text + text_content
-        except Exception as e:
-            print(f"Error extracting text from PDF with PyPDF2 {file_path}: {e}")
-            text_content = ""
-
-    # If PyPDF2 didn't extract much text or is not available, try unstructured as a fallback
-    if (len(text_content.strip()) < 100) and unstructured_available:
-        try:
+            elements = partition_pdf(file_path)
+        except (ImportError, AttributeError):
+            # Fall back to generic partitioner if PDF-specific one is not available
             elements = partition(file_path)
-            text_content = "\n\n".join([str(el) for el in elements])
-        except Exception as e2:
-            print(f"Error with unstructured fallback: {e2}")
-            if len(text_content.strip()) == 0:
-                return None
 
-    # If we have some content, return it
-    if len(text_content.strip()) > 0:
-        return text_content
+        # Join all elements into a single text string
+        text_content = "\n\n".join([str(el) for el in elements])
 
-    # If we got here, we couldn't extract any text
-    print(f"Could not extract text from PDF {file_path}")
-    return None
+        # Add basic file information
+        file_info = f"PDF File: {os.path.basename(file_path)}\n"
+        file_info += f"Size: {os.path.getsize(file_path) / 1024 / 1024:.2f} MB\n"
+        file_info += f"Path: {file_path}\n\n"
+        file_info += "PDF Content:\n"
+
+        # Combine file info with content
+        text_content = file_info + text_content
+
+        # If we have content, return it
+        if len(text_content.strip()) > 0:
+            print(f"Successfully extracted text from {file_path} using unstructured")
+            return text_content
+
+        print(f"Unstructured extracted empty content from {file_path}")
+        return None
+
+    except Exception as e:
+        print(f"Error extracting text from PDF {file_path} with unstructured: {e}")
+        return None
 
 def extract_text_from_csv(file_path):
     """Extract text from CSV files with enhanced analysis."""

@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+MultiFileRAG Core Module
+
+This module provides the core functionality for the MultiFileRAG system, integrating
+LightRAG with file processing capabilities for PDF, CSV, image, and other file types.
+
+The MultiFileRAG class handles initialization, document processing, and querying,
+while utility functions support these operations. For additional utilities, see the
+multifilerag_utils.py module which provides a comprehensive set of helper functions
+for API interaction, Ollama status checking, and file operations.
+
+Author: Raul Pineda
+Version: 1.1.0
+License: MIT
+"""
 
 import os
 import sys
@@ -29,21 +44,40 @@ try:
     )
 except ImportError as e:
     print(f"Warning: Could not import multifile_processor: {e}")
-    # Define dummy functions
+    # Define dummy functions for when multifile_processor is not available
     def extract_text_from_pdf(file_path):
+        """Dummy function for PDF processing when multifile_processor is not available."""
         return f"PDF processing not available: {file_path}"
 
     def extract_text_from_csv(file_path):
+        """Dummy function for CSV processing when multifile_processor is not available."""
         return f"CSV processing not available: {file_path}"
 
     def extract_text_from_image(file_path):
+        """Dummy function for image processing when multifile_processor is not available."""
         return f"Image processing not available: {file_path}"
 
     def process_file(file_path):
+        """Dummy function for file processing when multifile_processor is not available."""
         return f"File processing not available: {file_path}"
 
 class MultiFileRAG:
-    """MultiFileRAG class that integrates LightRAG with PDF, CSV, and image processing."""
+    """
+    MultiFileRAG class that integrates LightRAG with PDF, CSV, and image processing.
+
+    This class provides a high-level interface for working with the LightRAG system,
+    with added capabilities for processing various file types including PDFs, CSVs,
+    images, and more. It handles initialization of the LightRAG system, document
+    processing, and querying.
+
+    Attributes:
+        working_dir (str): Directory for storing RAG data (vectors, graphs, etc.)
+        input_dir (str): Directory containing input files to process
+        llm_model_name (str): Name of the Ollama LLM model to use
+        embedding_model_name (str): Name of the Ollama embedding model to use
+        ollama_host (str): URL of the Ollama server
+        rag (LightRAG): The underlying LightRAG instance
+    """
 
     def __init__(
         self,
@@ -54,15 +88,20 @@ class MultiFileRAG:
         ollama_host: str = "http://localhost:11434",
         log_level: str = "INFO"
     ):
-        """Initialize the MultiFileRAG instance.
+        """
+        Initialize the MultiFileRAG instance.
 
         Args:
-            working_dir: Directory for storing RAG data
-            input_dir: Directory containing input files
-            llm_model_name: Name of the Ollama LLM model
-            embedding_model_name: Name of the Ollama embedding model
-            ollama_host: URL of the Ollama server
-            log_level: Logging level
+            working_dir (str): Directory for storing RAG data (vectors, graphs, etc.)
+            input_dir (str): Directory containing input files to process
+            llm_model_name (str): Name of the Ollama LLM model to use (e.g., "llama3", "deepseek-r1:32b")
+            embedding_model_name (str): Name of the Ollama embedding model to use (e.g., "nomic-embed-text", "bge-m3")
+            ollama_host (str): URL of the Ollama server (default: "http://localhost:11434")
+            log_level (str): Logging level (e.g., "INFO", "DEBUG", "WARNING")
+
+        Note:
+            This method only sets up the instance attributes. You must call `initialize()`
+            to fully initialize the LightRAG system before using other methods.
         """
         self.working_dir = working_dir
         self.input_dir = input_dir
@@ -81,9 +120,21 @@ class MultiFileRAG:
         self.rag = None
 
     async def initialize(self):
-        """Initialize the LightRAG instance."""
+        """
+        Initialize the LightRAG instance.
+
+        This method creates and initializes the underlying LightRAG instance with the
+        appropriate LLM and embedding models. It must be called before using any other
+        methods that interact with the RAG system.
+
+        Returns:
+            self: The initialized MultiFileRAG instance (for method chaining)
+
+        Raises:
+            Exception: If there's an error initializing the LightRAG instance or its storages
+        """
         # Get embedding dimension from environment variable or determine based on model
-        embedding_dim = int(os.getenv("EMBEDDING_DIM", 768))  # Default to 768 if not specified
+        embedding_dim = int(os.getenv("EMBEDDING_DIM", "768"))  # Default to 768 if not specified
 
         # Override with model-specific dimension if not explicitly set in .env
         if "EMBEDDING_DIM" not in os.environ and self.embedding_model_name == "bge-m3":
@@ -188,15 +239,31 @@ class MultiFileRAG:
         mode: str = "hybrid",
         stream: bool = False
     ) -> Union[str, AsyncGenerator]:
-        """Query the RAG system.
+        """
+        Query the RAG system with a natural language question.
+
+        This method sends a query to the LightRAG system and returns a response based on
+        the documents that have been processed and indexed. Different query modes offer
+        different retrieval strategies optimized for different types of questions.
 
         Args:
-            query_text: The query text
-            mode: Query mode (naive, local, global, hybrid, mix)
-            stream: Whether to stream the response
+            query_text (str): The natural language query or question
+            mode (str): Query mode to use. Options are:
+                - "naive": Basic search without advanced techniques
+                - "local": Focuses on context-dependent information within documents
+                - "global": Utilizes global knowledge across all documents
+                - "hybrid": Combines local and global retrieval methods
+                - "mix": Integrates knowledge graph and vector retrieval
+            stream (bool): Whether to stream the response (True) or return it all at once (False)
 
         Returns:
-            String response or async generator for streaming
+            Union[str, AsyncGenerator]:
+                - If stream=False: A string containing the complete response
+                - If stream=True: An async generator that yields response chunks as they're generated
+
+        Raises:
+            ValueError: If an invalid query mode is provided
+            RuntimeError: If the RAG system is not initialized
         """
         if not self.rag:
             logger.error("RAG system not initialized. Call initialize() first.")
@@ -216,11 +283,25 @@ class MultiFileRAG:
         )
 
 async def print_stream(stream):
-    """Print a streaming response."""
+    """
+    Print a streaming response from an async generator.
+
+    This utility function consumes an async generator (stream) and prints each
+    chunk as it's received, without adding newlines between chunks. This is useful
+    for displaying streaming responses from the LLM in real-time.
+
+    Args:
+        stream: An async generator that yields string chunks
+
+    Example:
+        ```python
+        stream = mfrag.query("Tell me about...", stream=True)
+        await print_stream(stream)
+        ```
+    """
     async for chunk in stream:
         print(chunk, end="", flush=True)
 
-# Helper function to initialize and return a MultiFileRAG instance
 async def create_multifilerag(
     working_dir: str = "./rag_storage",
     input_dir: str = "./inputs",
@@ -229,7 +310,33 @@ async def create_multifilerag(
     ollama_host: str = "http://localhost:11434",
     log_level: str = "INFO"
 ) -> MultiFileRAG:
-    """Create and initialize a MultiFileRAG instance."""
+    """
+    Create and initialize a MultiFileRAG instance in a single function call.
+
+    This is a convenience function that creates a MultiFileRAG instance and
+    initializes it in one step. It's useful when you want to quickly set up
+    a MultiFileRAG instance without separate creation and initialization steps.
+
+    Args:
+        working_dir: Directory for storing RAG data
+        input_dir: Directory containing input files
+        llm_model_name: Name of the Ollama LLM model
+        embedding_model_name: Name of the Ollama embedding model
+        ollama_host: URL of the Ollama server
+        log_level: Logging level
+
+    Returns:
+        MultiFileRAG: An initialized MultiFileRAG instance ready to use
+
+    Example:
+        ```python
+        mfrag = await create_multifilerag(
+            llm_model_name="deepseek-r1:32b",
+            embedding_model_name="bge-m3"
+        )
+        response = mfrag.query("What's in my documents?")
+        ```
+    """
     mfrag = MultiFileRAG(
         working_dir=working_dir,
         input_dir=input_dir,
@@ -241,8 +348,20 @@ async def create_multifilerag(
     await mfrag.initialize()
     return mfrag
 
-# Example usage
 def main():
+    """
+    Example usage of MultiFileRAG as a standalone application.
+
+    This function demonstrates how to use MultiFileRAG to process documents and
+    perform queries. It reads configuration from environment variables, initializes
+    the MultiFileRAG instance, processes documents in the input directory, and
+    tests different query modes.
+
+    This is intended as a demonstration and can be run directly with:
+    ```
+    python multifilerag_core.py
+    ```
+    """
     # Get environment variables or use defaults
     working_dir = os.getenv("WORKING_DIR", "./rag_storage")
     input_dir = os.getenv("INPUT_DIR", "./inputs")

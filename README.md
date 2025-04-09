@@ -48,6 +48,14 @@ The system uses a Retrieval-Augmented Generation (RAG) approach to:
   - **CLI Interface**: Command-line tools for processing files and querying the system
   - **Python API**: Programmatic access for integration with other applications
 
+- **Advanced Database Support**:
+  - **PostgreSQL with pgvector**: Store vectors and key-value data with optimized similarity search
+  - **Neo4j Graph Database**: Store and query complex relationships between entities
+  - **Redis Cache Layer**: Fast in-memory cache for frequently accessed data
+  - **Hybrid Cache System**: Two-level cache with Redis (speed) and PostgreSQL (persistence)
+  - **Node.js API**: RESTful API for accessing document data and query history
+  - **Docker Support**: Easy setup with Docker Compose for all database services
+
 - **Utilities & Debugging**:
   - **Centralized Utilities**: Comprehensive utilities module for common operations
   - **Monitoring Tools**: Real-time monitoring of document processing
@@ -151,7 +159,41 @@ You can configure which models to use in the `.env` file.
 
 ## Usage
 
-### Starting the Server
+### Database Setup
+
+MultiFileRAG supports PostgreSQL with pgvector for vector storage, PostgreSQL for key-value storage, Neo4j for graph database, and Redis for caching. The system automatically manages these databases:
+
+1. Make sure Docker Desktop is installed and running
+2. Start the MultiFileRAG server normally:
+
+```powershell
+.\start_multifilerag_server.bat
+```
+
+The server will automatically:
+- Check if database services are running
+- Start any missing database services using Docker Compose
+- Initialize the databases with required tables, indexes, and extensions
+- Configure the hybrid cache system (Redis + PostgreSQL)
+
+#### Manual Database Management
+
+You can also manage the databases manually using these scripts:
+
+- **Start Databases**: `start_databases.bat`
+- **Stop Databases**: `stop_databases.bat`
+- **Restart Databases**: `restart_databases.bat`
+- **Check Status**: `check_database_status.bat`
+
+#### Disabling Database Auto-Start
+
+If you want to start the server without automatically starting the databases:
+
+```powershell
+.\start_multifilerag_server.bat --no-db-autostart
+```
+
+### Starting the Server Without Databases
 
 MultiFileRAG provides a web interface for easy interaction with the system. To start the server:
 
@@ -282,6 +324,26 @@ EMBEDDING_DIM=768
 # Working Directory
 WORKING_DIR=./rag_storage
 INPUT_DIR=./inputs
+
+# Database Configuration
+LIGHTRAG_KV_STORAGE=PGKVStorage
+LIGHTRAG_VECTOR_STORAGE=PGVectorStorage
+LIGHTRAG_GRAPH_STORAGE=PGGraphStorage
+LIGHTRAG_DOC_STATUS_STORAGE=PGDocStatusStorage
+
+# PostgreSQL Configuration
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DATABASE=multifilerag
+
+# Node.js Database Configuration
+NODEJS_DB_HOST=localhost
+NODEJS_DB_PORT=3000
+NODEJS_DB_USER=admin
+NODEJS_DB_PASSWORD=admin
+NODEJS_DB_NAME=multifilerag_nodejs
 ```
 
 ### Changing Models
@@ -301,6 +363,75 @@ To change the LLM or embedding model:
 - **High Performance**: deepseek-r1:32b + bge-m3
 - **Balanced**: llama3 + nomic-embed-text
 - **Lightweight**: phi3 + bge-small-en-v1.5
+
+### Database Configuration
+
+MultiFileRAG supports a comprehensive database setup with PostgreSQL (pgvector), Neo4j, and Redis:
+
+1. Make sure Docker Desktop is installed and running
+2. Update the `.env` file with the appropriate storage implementations:
+   ```
+   # Key-value storage with hybrid cache (Redis + PostgreSQL)
+   LIGHTRAG_KV_STORAGE=HybridKVStorage
+   # Vector storage with pgvector extension
+   LIGHTRAG_VECTOR_STORAGE=PGVectorStorage
+   # Graph storage with Neo4j
+   LIGHTRAG_GRAPH_STORAGE=Neo4jStorage
+   # Document status storage with PostgreSQL
+   LIGHTRAG_DOC_STATUS_STORAGE=PGDocStatusStorage
+   # Cache storage with hybrid implementation
+   LIGHTRAG_CACHE_STORAGE=HybridCacheStorage
+   ```
+3. Configure the database connections in the `.env` file:
+   ```
+   # PostgreSQL Configuration
+   POSTGRES_HOST=localhost
+   POSTGRES_PORT=5432
+   POSTGRES_USER=postgres
+   POSTGRES_PASSWORD=postgres
+   POSTGRES_DATABASE=multifilerag
+
+   # Neo4j Configuration
+   NEO4J_URI=bolt://localhost:7687
+   NEO4J_USER=neo4j
+   NEO4J_PASSWORD=multifilerag
+
+   # Redis Configuration
+   REDIS_HOST=localhost
+   REDIS_PORT=6379
+   REDIS_DB=0
+   REDIS_TTL=3600
+   ```
+4. Start the database containers using Docker Compose:
+   ```powershell
+   docker-compose up -d
+   ```
+5. Start the MultiFileRAG server with database support:
+   ```powershell
+   .\start_multifilerag_with_db.ps1
+   ```
+
+#### Data Processing Flow
+
+The system uses the following data processing flow:
+
+**Document Ingestion:**
+- Documents are chunked into manageable pieces
+- LLM extracts entities and relationships
+- Embedding model converts chunks to vectors
+- Data is stored in respective databases (PostgreSQL for vectors and key-value, Neo4j for graphs)
+
+**Query Processing:**
+- User query is analyzed to identify entities and keywords
+- Query is converted to vector representation
+- Vector similarity search finds relevant chunks using pgvector
+- Graph traversal identifies related entities and relationships using Neo4j
+- Results from both approaches are combined and ranked
+
+**Answer Generation:**
+- Retrieved context is formatted and sent to LLM
+- LLM generates response based on retrieved information
+- Results are cached in the hybrid cache system (Redis + PostgreSQL) for similar future queries
 
 ## Query Modes
 

@@ -10,10 +10,16 @@ It starts a web server that provides a REST API for interacting with the system.
 import os
 import sys
 import argparse
+import logging
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv(dotenv_path=".env", override=False)
+
+# Configure logging
+logging.basicConfig(level=logging.INFO,
+                   format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 def check_ollama_running():
     """Check if Ollama server is running."""
@@ -42,6 +48,48 @@ def ensure_directories():
     """Ensure the required directories exist."""
     from multifilerag_utils import ensure_directories as utils_ensure_directories
     utils_ensure_directories()
+
+def check_and_start_databases(auto_start=True):
+    """Check if databases are running and start them if needed."""
+    try:
+        # Import the database manager
+        from database_manager import get_database_manager
+
+        # Get the database manager instance
+        db_manager = get_database_manager()
+
+        # Check if databases are running
+        status = db_manager.check_all_services()
+        all_running = all(status.values())
+
+        if all_running:
+            logger.info("All database services are already running.")
+            return True
+
+        # Log which services are not running
+        for service, running in status.items():
+            if not running:
+                logger.info(f"Database service {service} is not running.")
+
+        # Start databases if auto_start is enabled
+        if auto_start:
+            logger.info("Starting database services...")
+            success = db_manager.start_services()
+            if success:
+                logger.info("Database services started successfully.")
+                return True
+            else:
+                logger.warning("Failed to start database services. Continuing anyway...")
+                return False
+        else:
+            logger.warning("Database services are not running and auto-start is disabled.")
+            return False
+    except ImportError:
+        logger.warning("Database manager not found. Skipping database check.")
+        return True
+    except Exception as e:
+        logger.error(f"Error checking/starting databases: {e}")
+        return False
 
 def start_server(args):
     """Start the LightRAG server."""
@@ -99,8 +147,12 @@ def main():
     parser.add_argument("--input-dir", default=os.getenv("INPUT_DIR", "./inputs"), help="Directory containing input documents")
     parser.add_argument("--log-level", default=os.getenv("LOG_LEVEL", "INFO"), help="Logging level")
     parser.add_argument("--auto-scan", action="store_true", help="Automatically scan input directory at startup")
+    parser.add_argument("--no-db-autostart", action="store_true", help="Disable automatic database startup")
 
     args = parser.parse_args()
+
+    # Configure logging level
+    logging.getLogger().setLevel(getattr(logging, args.log_level.upper()))
 
     # Check if Ollama is running
     if not check_ollama_running():
@@ -115,6 +167,14 @@ def main():
 
     # Ensure directories exist
     ensure_directories()
+
+    # Check and start databases if needed
+    if not args.no_db_autostart:
+        logger.info("Checking database services...")
+        if not check_and_start_databases(auto_start=True):
+            logger.warning("Some database services could not be started. Continuing anyway...")
+    else:
+        logger.info("Database auto-start is disabled. Skipping database check.")
 
     # Start the server
     if not start_server(args):

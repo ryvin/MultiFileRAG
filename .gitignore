@@ -42,9 +42,61 @@ wheels/
 # IDE files
 .idea/
 .vscode/
-*.swp
-*.swo
 
 # OS specific files
 .DS_Store
 Thumbs.db
+
+# Docker related files
+docker/
+docker-compose.yml
+docker-compose.override.yml
+.dockerignore
+*.dockerfile
+Dockerfile*
+
+# Docker volumes
+*_data/
+redis_data/
+postgres_data/
+neo4j_data/
+neo4j_logs/
+neo4j_import/
+neo4j_plugins/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+*.rdb
+*.aof
+
+# Database dumps
+*.dump
+*.sql
+*.bak
+*.backup
+dump.rdb
+
+# Configuration files with sensitive information
+config.ini
+*.env
+.env.*
+!.env.example
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+tmp/
+temp/
+
+# Log files
+*.log
+logs/
+log/
+
+# Test files
+test_*.py
+!test_requirements.txt

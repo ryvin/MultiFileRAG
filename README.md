@@ -207,6 +207,8 @@ python multifilerag_server.py
 
 Then open your browser and navigate to `http://localhost:9621` to access the web interface.
 
+> **Note for Windows Users**: All PowerShell scripts (.ps1) have been converted to batch files (.bat) for better compatibility with CMD. Use the .bat files instead of the .ps1 files.
+
 ### Web Interface
 
 The web interface provides a user-friendly way to interact with MultiFileRAG:

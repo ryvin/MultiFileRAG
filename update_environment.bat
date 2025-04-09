@@ -1,8 +1,5 @@
 @echo off
-echo Testing PDF processing with enhanced capabilities...
-
-REM Define the PDF file to test
-set pdfFile=E:\Code\MultiFileRAG\inputs\1978897 Account Statements_2024-08-31.pdf
+echo Updating MultiFileRAG conda environment with all dependencies from requirements.txt...
 
 REM Check if conda is available
 if exist "C:\ProgramData\anaconda3\Scripts\activate.bat" (
@@ -16,18 +13,20 @@ if exist "C:\ProgramData\anaconda3\Scripts\activate.bat" (
     goto :error
 )
 
-REM Run the test script
-echo Running PDF processing test on: %pdfFile%
-python test_pdf_processing.py "%pdfFile%"
+REM Update the environment with all dependencies from requirements.txt
+echo Installing dependencies from requirements.txt...
+pip install -r requirements.txt
 if %ERRORLEVEL% neq 0 goto :error
 
-echo Test complete!
+echo Environment update complete!
+echo You can now process problematic PDFs with the enhanced PDF processing capabilities.
 goto :end
 
 :error
-echo Test failed. Please make sure you've installed the required dependencies:
-echo 1. Run install_pdf_dependencies.bat
-echo 2. Try running this test again
+echo Environment update failed. Please try the following manual steps:
+echo 1. Open Anaconda Prompt
+echo 2. Run: conda activate multifilerag
+echo 3. Run: pip install -r requirements.txt
 
 :end
 echo Press any key to exit...
